@@ -1,0 +1,169 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 3,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-06-09T16:03:12.677Z",
+    "end": "2025-06-09T16:04:16.076Z",
+    "duration": 63399,
+    "testsRegistered": 4,
+    "passPercent": 75,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "94a19ad0-1508-4cbd-b2ea-f61ea79390ad",
+      "title": "",
+      "fullFile": "cypress\\e2e\\beckett\\login\\login.cy.js",
+      "file": "cypress\\e2e\\beckett\\login\\login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a64076f0-9410-4fd7-930a-930aa03c88a4",
+          "title": "Positive Login Test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "login successfully with valid credentials",
+              "fullTitle": "Positive Login Test login successfully with valid credentials",
+              "timedOut": null,
+              "duration": 27189,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/login');\ncy.Login(email, password);\ncy.url().should('not.include', '/login');\ncy.contains('Logout', {\n  timeout: 10000\n}).should('be.visible');",
+              "err": {},
+              "uuid": "8ccad321-c683-49a9-a1a6-bd5978c20230",
+              "parentUUID": "a64076f0-9410-4fd7-930a-930aa03c88a4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "stay logged in with Remember Me checked",
+              "fullTitle": "Positive Login Test stay logged in with Remember Me checked",
+              "timedOut": null,
+              "duration": 23561,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/login');\ncy.get('#loginEmail').type(email);\ncy.get('#loginPassword').type(password);\ncy.get('.form-check-label').should('be.visible').click();\ncy.get('#btn_login', {\n  timeout: 10000\n}).click();\ncy.url().should('not.include', '/login');\ncy.contains('Logout', {\n  timeout: 10000\n}).should('be.visible');",
+              "err": {
+                "message": "Error: The following error originated from your application code, not from Cypress.\n\n  > Minified React error #418; visit https://reactjs.org/docs/error-decoder.html?invariant=418 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n\nWhen Cypress detects uncaught errors originating from your application it will automatically fail the current test.\n\nThis behavior is configurable, and you can choose to turn this off by listening to the `uncaught:exception` event.\n\nhttps://on.cypress.io/uncaught-exception-from-application",
+                "estack": "Error: The following error originated from your application code, not from Cypress.\n\n  > Minified React error #418; visit https://reactjs.org/docs/error-decoder.html?invariant=418 for the full message or use the non-minified dev environment for full errors and additional helpful warnings.\n\nWhen Cypress detects uncaught errors originating from your application it will automatically fail the current test.\n\nThis behavior is configurable, and you can choose to turn this off by listening to the `uncaught:exception` event.\n\nhttps://on.cypress.io/uncaught-exception-from-application\n    at lg (https://www.beckett.com/_next/static/chunks/framework-be174dc6c4a39b60.js:1:46897)\n    at i (https://www.beckett.com/_next/static/chunks/framework-be174dc6c4a39b60.js:1:121492)\n    at oO (https://www.beckett.com/_next/static/chunks/framework-be174dc6c4a39b60.js:1:99459)\n    at <unknown> (https://www.beckett.com/_next/static/chunks/framework-be174dc6c4a39b60.js:1:99326)\n    at oF (https://www.beckett.com/_next/static/chunks/framework-be174dc6c4a39b60.js:1:99333)\n    at oS (https://www.beckett.com/_next/static/chunks/framework-be174dc6c4a39b60.js:1:94372)\n    at E (https://www.beckett.com/_next/static/chunks/framework-be174dc6c4a39b60.js:1:137870)\n    at MessagePort.T (https://www.beckett.com/_next/static/chunks/framework-be174dc6c4a39b60.js:1:138400)",
+                "diff": null
+              },
+              "uuid": "caed6fe6-6049-4c20-a10c-46d9d18efc1b",
+              "parentUUID": "a64076f0-9410-4fd7-930a-930aa03c88a4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "display error for incorrect password and email",
+              "fullTitle": "Positive Login Test display error for incorrect password and email",
+              "timedOut": null,
+              "duration": 6278,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/login');\ncy.get('#loginEmail').type(email);\ncy.get('#loginPassword').type(WrongPWD);\ncy.get('#btn_login').click();\ncy.contains(\"We're sorry, but the email or password you entered is incorrect. Please try again.\").should('be.visible');",
+              "err": {},
+              "uuid": "5394e26c-7e2d-443e-8827-6615ca6eda30",
+              "parentUUID": "a64076f0-9410-4fd7-930a-930aa03c88a4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "show error when fields are empty",
+              "fullTitle": "Positive Login Test show error when fields are empty",
+              "timedOut": null,
+              "duration": 3011,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/login');\ncy.get('#btn_login').should('be.disabled');",
+              "err": {},
+              "uuid": "e2c954dc-6b51-427f-80fd-f61219eb7c47",
+              "parentUUID": "a64076f0-9410-4fd7-930a-930aa03c88a4",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8ccad321-c683-49a9-a1a6-bd5978c20230",
+            "5394e26c-7e2d-443e-8827-6615ca6eda30",
+            "e2c954dc-6b51-427f-80fd-f61219eb7c47"
+          ],
+          "failures": [
+            "caed6fe6-6049-4c20-a10c-46d9d18efc1b"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 60039,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/beckett1",
+        "reportFilename": "report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

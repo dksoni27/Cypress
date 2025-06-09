@@ -1,0 +1,131 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 1,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-06-09T15:59:37.020Z",
+    "end": "2025-06-09T16:01:54.633Z",
+    "duration": 137613,
+    "testsRegistered": 2,
+    "passPercent": 50,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "0edccc3f-bc36-42ab-9007-78b72e21f56c",
+      "title": "",
+      "fullFile": "cypress\\e2e\\beckett\\opg\\opgPage.cy.js",
+      "file": "cypress\\e2e\\beckett\\opg\\opgPage.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "dbbac08f-1b41-4528-9ec7-8aad042d7653",
+          "title": "Beckett opg Test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "opg guest checkout test",
+              "fullTitle": "Beckett opg Test opg guest checkout test",
+              "timedOut": null,
+              "duration": 60341,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/opg');\ncy.get('a[rel=\"Total Access Online Price Guide\"]').should('be.visible').click();\ncy.get('#menu1 > div.row > div > div.table-box > div > table > tbody > tr:nth-child(5)').should('be.visible').click();\ncy.get('#subscribe_total_now').should('be.visible').click();\ncy.get('#onetrust-accept-btn-handler').click();\ncy.get('#loginEmail').should('be.visible').type(email);\ncy.get('#guest_account').should('be.checked');\ncy.get('#send-valid-guest-login-otp').should('be.visible').click();\ncy.wait(8000);\ncy.get('#validgusetloginOTP').should('be.visible').click();\ncy.get('#login_submit').should('be.visible').click();",
+              "err": {
+                "message": "CypressError: Timed out after waiting `60000ms` for your remote page to load.\n\nYour page did not fire its `load` event within `60000ms`.\n\nYou can try increasing the `pageLoadTimeout` value in `cypress.config.js` to wait longer.\n\nBrowsers will not fire the `load` event until all stylesheets and scripts are done downloading.\n\nWhen this `load` event occurs, Cypress will continue running commands.",
+                "estack": "CypressError: Timed out after waiting `60000ms` for your remote page to load.\n\nYour page did not fire its `load` event within `60000ms`.\n\nYou can try increasing the `pageLoadTimeout` value in `cypress.config.js` to wait longer.\n\nBrowsers will not fire the `load` event until all stylesheets and scripts are done downloading.\n\nWhen this `load` event occurs, Cypress will continue running commands.\n    at timedOutWaitingForPageLoad (https://www.beckett.com/__cypress/runner/cypress_runner.js:132731:64)\n    at <unknown> (https://www.beckett.com/__cypress/runner/cypress_runner.js:133725:16)\n    at tryCatcher (https://www.beckett.com/__cypress/runner/cypress_runner.js:1777:23)\n    at <unknown> (https://www.beckett.com/__cypress/runner/cypress_runner.js:4156:41)\n    at tryCatcher (https://www.beckett.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (https://www.beckett.com/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (https://www.beckett.com/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (https://www.beckett.com/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://www.beckett.com/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (https://www.beckett.com/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (https://www.beckett.com/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (https://www.beckett.com/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (https://www.beckett.com/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypressautometion/./cypress/e2e/beckett/opg/opgPage.cy.js:16:9)",
+                "diff": null
+              },
+              "uuid": "1174ea70-2558-46ed-b47d-9416a86658ce",
+              "parentUUID": "dbbac08f-1b41-4528-9ec7-8aad042d7653",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "opg  checkout using login  test",
+              "fullTitle": "Beckett opg Test opg  checkout using login  test",
+              "timedOut": null,
+              "duration": 72345,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/opg');\ncy.get('a[rel=\"Total Access Online Price Guide\"]').should('be.visible').click();\ncy.get('#menu1 > div.row > div > div.table-box > div > table > tbody > tr:nth-child(5)').should('be.visible').click();\ncy.get('#subscribe_total_now').should('be.visible').click();\ncy.get('#onetrust-accept-btn-handler').click();\ncy.get('#loginEmail').should('be.visible').type(email1);\ncy.get('#beckett_account').check({\n  force: true\n});\ncy.get('#loginPassword').should('be.visible').type(password);\ncy.get('#login_submit').should('be.visible').click();\ncy.wait(5000);\ncy.get('#cart_panel_head > .panel-title > .clickdisable').should('be.visible');\ncy.get('div.BtnConTopAbs > a').should('be.visible').click();",
+              "err": {},
+              "uuid": "1a4a8ed8-51f0-49e7-8083-316327faab6a",
+              "parentUUID": "dbbac08f-1b41-4528-9ec7-8aad042d7653",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "1a4a8ed8-51f0-49e7-8083-316327faab6a"
+          ],
+          "failures": [
+            "1174ea70-2558-46ed-b47d-9416a86658ce"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 132686,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/beckett1",
+        "reportFilename": "report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

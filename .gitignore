@@ -1,0 +1,8 @@
+# Node modules (do not track dependencies)
+node_modules/
+
+# Cypress screenshots and videos
+cypress/screenshots/
+cypress/videos/
+cypress/dowmloads/
+
