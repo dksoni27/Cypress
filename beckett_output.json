@@ -1,0 +1,636 @@
+{
+  "stats": {
+    "suites": 8,
+    "tests": 14,
+    "passes": 12,
+    "pending": 0,
+    "failures": 2,
+    "testsRegistered": 14,
+    "passPercent": 85.71428571428571,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "start": "2025-06-10T17:44:28.924Z",
+    "end": "2025-06-10T17:55:11.948Z",
+    "duration": 643024
+  },
+  "results": [
+    {
+      "uuid": "0b9b1bc8-0a90-4aa0-8c7c-0cf523881c80",
+      "title": "",
+      "fullFile": "cypress\\e2e\\beckett\\opg\\opgPage.cy.js",
+      "file": "cypress\\e2e\\beckett\\opg\\opgPage.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "151b5451-2dc7-4cfb-b234-3f374c89c187",
+          "title": "Beckett opg Test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "opg guest checkout test",
+              "fullTitle": "Beckett opg Test opg guest checkout test",
+              "timedOut": null,
+              "duration": 48280,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/opg');\ncy.get('a[rel=\"Total Access Online Price Guide\"]').should('be.visible').click();\ncy.get('#menu1 > div.row > div > div.table-box > div > table > tbody > tr:nth-child(5)').should('be.visible').click();\ncy.get('#subscribe_total_now').should('be.visible').click();\ncy.get('#onetrust-accept-btn-handler').click();\ncy.get('#loginEmail').should('be.visible').type(email);\ncy.get('#guest_account').should('be.checked');\ncy.get('#send-valid-guest-login-otp').should('be.visible').click();\ncy.wait(8000);\ncy.get('#validgusetloginOTP').should('be.visible').click();\ncy.get('#login_submit').should('be.visible').click();",
+              "err": {},
+              "uuid": "745f577c-3c6a-4b31-be28-7616d0762a8b",
+              "parentUUID": "151b5451-2dc7-4cfb-b234-3f374c89c187",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "opg  checkout using login  test",
+              "fullTitle": "Beckett opg Test opg  checkout using login  test",
+              "timedOut": null,
+              "duration": 53248,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/opg');\ncy.get('a[rel=\"Total Access Online Price Guide\"]').should('be.visible').click();\ncy.get('#menu1 > div.row > div > div.table-box > div > table > tbody > tr:nth-child(5)').should('be.visible').click();\ncy.get('#subscribe_total_now').should('be.visible').click();\ncy.get('#onetrust-accept-btn-handler').click();\ncy.get('#loginEmail').should('be.visible').type(email1);\ncy.get('#beckett_account').check({\n  force: true\n});\ncy.get('#loginPassword').should('be.visible').type(password);\ncy.get('#login_submit').should('be.visible').click();\ncy.wait(5000);\ncy.get('#cart_panel_head > .panel-title > .clickdisable').should('be.visible');\ncy.get('div.BtnConTopAbs > a').should('be.visible').click();",
+              "err": {},
+              "uuid": "f3cd44c1-c283-423c-b786-c29630f65b4d",
+              "parentUUID": "151b5451-2dc7-4cfb-b234-3f374c89c187",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "745f577c-3c6a-4b31-be28-7616d0762a8b",
+            "f3cd44c1-c283-423c-b786-c29630f65b4d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 101528,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "366bc9d4-8518-4cf7-9491-e83845e73482",
+      "title": "",
+      "fullFile": "cypress\\e2e\\beckett\\opg\\opgSearch.cy.js",
+      "file": "cypress\\e2e\\beckett\\opg\\opgSearch.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3b2ff5a1-2973-49ce-82b4-5bbc993708da",
+          "title": "Beckett opg search",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "opg search without login ",
+              "fullTitle": "Beckett opg search opg search without login ",
+              "timedOut": null,
+              "duration": 48201,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/opg');\ncy.get('a.btn.borOne', {\n  timeout: 10000\n}).should('be.visible');\ncy.get('#siteSearchQuery').should('be.visible').click();\ncy.url().should('include', '/online-price-guide');\ncy.get('#siteSearchQuery').should('be.visible').type('jordan');\ncy.contains('Please login to search the Beckett Online Price Guide. ').should('be.visible');",
+              "err": {},
+              "uuid": "1483d3c1-4b3e-4e23-908b-58877c54f6f3",
+              "parentUUID": "3b2ff5a1-2973-49ce-82b4-5bbc993708da",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "opg search with login ",
+              "fullTitle": "Beckett opg search opg search with login ",
+              "timedOut": null,
+              "duration": 98087,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/opg');\ncy.get('div[class=\"LogGridRight\"] a[aria-label=\"Login\"]').should('be.visible').click();\ncy.get('#loginEmail').type('devendras@beckett.com');\ncy.get('#loginPassword', {\n  timeout: 500\n}).type('Dksoni@2716');\ncy.get('#btn_login').click({\n  force: true\n});\ncy.wait(8000);\ncy.url().should('not.include', '/login');\ncy.url().should('include', '/online-price-guide');\ncy.get('#siteSearchQuery').should('be.visible').click();\ncy.get('#siteSearchQuery').should('be.visible').type('1986 Star Michael Jordan');\ncy.get('#search_button_opg').should('be.visible').click();\ncy.get('.bi.bi-filter').should('be.visible').click();\ncy.get('label[for=set_id1]').should('be.visible').click();",
+              "err": {},
+              "uuid": "bfcb9e16-5e37-4a32-b2ed-f829fd1bb28a",
+              "parentUUID": "3b2ff5a1-2973-49ce-82b4-5bbc993708da",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "1483d3c1-4b3e-4e23-908b-58877c54f6f3",
+            "bfcb9e16-5e37-4a32-b2ed-f829fd1bb28a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 146288,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "a4dcadcd-feb9-4191-9874-98ce70cd0aff",
+      "title": "",
+      "fullFile": "cypress\\e2e\\beckett\\login\\forgotpassword.cy.js",
+      "file": "cypress\\e2e\\beckett\\login\\forgotpassword.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "52f44f24-2703-4e95-8790-ddf6eb257e4b",
+          "title": "Forgot password test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "forgot password test",
+              "fullTitle": "Forgot password test forgot password test",
+              "timedOut": null,
+              "duration": 38646,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/');\ncy.get('.btn-outline-primary-new-color').should('be.visible').click();\ncy.get('#loginEmail').type(email);\ncy.get('#loginPassword').type(wpassword);\ncy.contains('a', 'Forgot Password').should('be.visible').click();\ncy.contains('h1', 'Forgot Password').should('be.visible');\ncy.get('#email').should('be.visible').type(email);\ncy.get('#g-recaptcha-1 > [style=\"width: 304px; height: 78px;\"] > div > iframe').should('be.visible').click();\ncy.get('.sentPassReset').should('be.visible').click();",
+              "err": {
+                "message": "CypressError: Timed out retrying after 5050ms: `cy.click()` failed because the page updated while this command was executing. Cypress tried to locate elements based on this query:\n\n> <a.Layout_lh30__t3Gt_.btn.btn-outline-primary-new-color>\n\nWe initially found matching element(s), but while waiting for them to become actionable, they disappeared from the page. Common situations why this happens:\n  - Your JS framework re-rendered asynchronously\n  - Your app code reacted to an event firing and removed the element\n\nYou can typically solve this by breaking up a chain. For example, rewrite:\n\n> `cy.get('button').click().click()`\n\nto\n\n> `cy.get('button').as('btn').click()`\n> `cy.get('@btn').click()`\n\nhttps://on.cypress.io/element-has-detached-from-dom",
+                "estack": "CypressError: Timed out retrying after 5050ms: `cy.click()` failed because the page updated while this command was executing. Cypress tried to locate elements based on this query:\n\n> <a.Layout_lh30__t3Gt_.btn.btn-outline-primary-new-color>\n\nWe initially found matching element(s), but while waiting for them to become actionable, they disappeared from the page. Common situations why this happens:\n  - Your JS framework re-rendered asynchronously\n  - Your app code reacted to an event firing and removed the element\n\nYou can typically solve this by breaking up a chain. For example, rewrite:\n\n> `cy.get('button').click().click()`\n\nto\n\n> `cy.get('button').as('btn').click()`\n> `cy.get('@btn').click()`\n\nhttps://on.cypress.io/element-has-detached-from-dom\n    at retryActionability (https://www.beckett.com/__cypress/runner/cypress_runner.js:113473:74)\n    at tryCatcher (https://www.beckett.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://www.beckett.com/__cypress/runner/cypress_runner.js:4285:29)\n    at whenStable (https://www.beckett.com/__cypress/runner/cypress_runner.js:145828:68)\n    at <unknown> (https://www.beckett.com/__cypress/runner/cypress_runner.js:145769:14)\n    at tryCatcher (https://www.beckett.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (https://www.beckett.com/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (https://www.beckett.com/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (https://www.beckett.com/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://www.beckett.com/__cypress/runner/cypress_runner.js:1671:18)\n    at Promise._fulfill (https://www.beckett.com/__cypress/runner/cypress_runner.js:1615:18)\n    at <unknown> (https://www.beckett.com/__cypress/runner/cypress_runner.js:5420:46)",
+                "diff": null
+              },
+              "uuid": "89c335fe-f220-41eb-8dd7-38d1c94fd80e",
+              "parentUUID": "52f44f24-2703-4e95-8790-ddf6eb257e4b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "89c335fe-f220-41eb-8dd7-38d1c94fd80e"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 38646,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "a7b05b59-74ae-49cc-b1e3-e2600e24e511",
+      "title": "",
+      "fullFile": "cypress\\e2e\\beckett\\login\\login.cy.js",
+      "file": "cypress\\e2e\\beckett\\login\\login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2d273415-a11a-4ad4-936f-e0b7863050b9",
+          "title": "Positive Login Test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "login successfully with valid credentials",
+              "fullTitle": "Positive Login Test login successfully with valid credentials",
+              "timedOut": null,
+              "duration": 20368,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/login');\ncy.Login(email, password);\ncy.url().should('not.include', '/login');\ncy.contains('Logout', {\n  timeout: 10000\n}).should('be.visible');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 5000ms: expected 'https://www.beckett.com/login/' to not include '/login'",
+                "estack": "AssertionError: Timed out retrying after 5000ms: expected 'https://www.beckett.com/login/' to not include '/login'\n    at Context.eval (webpack://cypressautometion/./cypress/e2e/beckett/login/login.cy.js:14:15)",
+                "diff": null
+              },
+              "uuid": "15270f2a-df18-41a8-91a9-1b23ed2f13cb",
+              "parentUUID": "2d273415-a11a-4ad4-936f-e0b7863050b9",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "stay logged in with Remember Me checked",
+              "fullTitle": "Positive Login Test stay logged in with Remember Me checked",
+              "timedOut": null,
+              "duration": 15011,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/login');\ncy.get('#loginEmail').type(email);\ncy.get('#loginPassword').type(password);\ncy.get('.form-check-label').should('be.visible').click();\ncy.get('#btn_login', {\n  timeout: 10000\n}).click();\ncy.url().should('not.include', '/login');\ncy.contains('Logout', {\n  timeout: 10000\n}).should('be.visible');",
+              "err": {},
+              "uuid": "c06bedb3-3b8f-42a8-b81a-69c793d7a31c",
+              "parentUUID": "2d273415-a11a-4ad4-936f-e0b7863050b9",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "display error for incorrect password and email",
+              "fullTitle": "Positive Login Test display error for incorrect password and email",
+              "timedOut": null,
+              "duration": 6540,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/login');\ncy.get('#loginEmail').type(email);\ncy.get('#loginPassword').type(WrongPWD);\ncy.get('#btn_login').click();\ncy.contains(\"We're sorry, but the email or password you entered is incorrect. Please try again.\").should('be.visible');",
+              "err": {},
+              "uuid": "933146fc-7fdc-49ef-b6e6-11c5e7672157",
+              "parentUUID": "2d273415-a11a-4ad4-936f-e0b7863050b9",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "show error when fields are empty",
+              "fullTitle": "Positive Login Test show error when fields are empty",
+              "timedOut": null,
+              "duration": 2602,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/login');\ncy.get('#btn_login').should('be.disabled');",
+              "err": {},
+              "uuid": "6ad4be96-00fe-42b4-b65f-984fcb431c86",
+              "parentUUID": "2d273415-a11a-4ad4-936f-e0b7863050b9",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c06bedb3-3b8f-42a8-b81a-69c793d7a31c",
+            "933146fc-7fdc-49ef-b6e6-11c5e7672157",
+            "6ad4be96-00fe-42b4-b65f-984fcb431c86"
+          ],
+          "failures": [
+            "15270f2a-df18-41a8-91a9-1b23ed2f13cb"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 44521,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "747beb32-6fe9-4bb6-9a0c-441cdde477c9",
+      "title": "",
+      "fullFile": "cypress\\e2e\\beckett\\bca\\bca.cy.js",
+      "file": "cypress\\e2e\\beckett\\bca\\bca.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "07ea517d-68f3-4ca8-bb0b-824683f0f70a",
+          "title": "Beckett bca order  Test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "BCA search",
+              "fullTitle": "Beckett bca order  Test BCA search",
+              "timedOut": null,
+              "duration": 71127,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"https://www.beckett.com/bca\");\ncy.get('.container > .ServiceSlot > .serSec > .sendBtn > .currency_alert').click();\ncy.get('#loginEmail').type(email);\ncy.get('#loginPassword').type(password, {\n  log: false\n});\ncy.get('#btn_login').click();\n//login verification \ncy.url().should('include', '/bca/add');\n//creat a order \ncy.get('select[name=\"service_term\"]').select('2').should('have.value', '2');\ncy.wait(8000);\n// search 1871 Boston Red Stockings Wright Cabinets #NNO Harry Schafer\ncy.get('input[name=\"search_text\"]').should('be.visible').type('1871 Boston Red Stockings Wright Cabinets #NNO Harry Schafer');\ncy.wait(8000);\ncy.get('#search_submit').should('be.visible').click();\ncy.wait(8000);\ncy.get('li[title=\"1871 Boston Red Stockings Wright Cabinets #NNO Harry Schafer\"]').should('be.visible');\ncy.get('img[alt=\"Remove\"]').first().click();\n/// search 2009\ncy.get('input[name=\"search_text\"]').should('be.visible').type('2009');\ncy.wait(8000);\ncy.get('#search_submit').should('be.visible').click();\ncy.wait(8000);",
+              "err": {},
+              "uuid": "deb1fe72-bd90-4e8b-a229-b9c8f6adb782",
+              "parentUUID": "07ea517d-68f3-4ca8-bb0b-824683f0f70a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "BCA order place",
+              "fullTitle": "Beckett bca order  Test BCA order place",
+              "timedOut": null,
+              "duration": 35161,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"https://www.beckett.com/bca\");\ncy.get('.container > .ServiceSlot > .serSec > .sendBtn > .currency_alert').click();\ncy.get('#loginEmail').type(email);\ncy.get('#loginPassword').type(password, {\n  log: false\n});\ncy.get('#btn_login').click();\n//login verification \ncy.url().should('include', '/bca/add');\n//creat a order \ncy.get('select[name=\"service_term\"]').select('2').should('have.value', '2');\ncy.wait(8000);\ncy.get('a.btn-blue').contains('Add Item').click();\ncy.get('.btn-blue-large > span').click();\ncy.get('#grade_type_raw').should('be.visible').should('not.be.checked');\ncy.get('#grade_type_graded').should('be.visible').should('not.be.checked').click();\ncy.get('select[name=\"grade_company\"]').should('be.visible').select('BGS Grade');\ncy.get('select[name=\"grade_card_condition\"]').should('be.visible');\ncy.get('input[name=\"card_serial_number_start\"]').should('be.visible').type('1234');\ncy.get('input[name=\"card_serial_number_end\"]').should('be.visible').type('12345');\ncy.get('input[name=\"serial_num\"]').should('be.visible').type('12345');\ncy.get('#custom_description').should('be.visible').type('it is test order');\ncy.get('button[class=\"btn-blue\"]').should('be.visible').click();\ncy.get('.btn-blue-large').should('be.visible').click();\n// payment page verification \ncy.get('#coupon_code').should('be.visible');\ncy.get('#gift_code').should('be.visible');\ncy.get('.btn-red').should('be.visible');\ncy.contains('Agree to Terms and Disclaimer').should('be.visible');\ncy.get('#terms').click();\ncy.get('#checkout_paypal').should('be.visible');\ncy.get('#checkout').should('be.visible').click();",
+              "err": {},
+              "uuid": "e97e366d-bc6f-498a-8782-4969662b79f1",
+              "parentUUID": "07ea517d-68f3-4ca8-bb0b-824683f0f70a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "deb1fe72-bd90-4e8b-a229-b9c8f6adb782",
+            "e97e366d-bc6f-498a-8782-4969662b79f1"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 106288,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "5ca5ed07-4ff6-4920-ba44-16d76ee77266",
+      "title": "",
+      "fullFile": "cypress\\e2e\\beckett\\bca\\bcaSearch.cy.js",
+      "file": "cypress\\e2e\\beckett\\bca\\bcaSearch.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e641dadb-d71e-4ebc-bb77-7404a2c0d5ae",
+          "title": "Beckett bca order  Test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "BCA search",
+              "fullTitle": "Beckett bca order  Test BCA search",
+              "timedOut": null,
+              "duration": 72354,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"https://www.beckett.com/bca\");\ncy.get('.container > .ServiceSlot > .serSec > .sendBtn > .currency_alert').click();\ncy.get('#loginEmail').type(email);\ncy.get('#loginPassword').type(password, {\n  log: false\n});\ncy.get('#btn_login').click();\n//login verification \ncy.url().should('include', '/bca/add');\n//creat a order \ncy.get('select[name=\"service_term\"]').select('2').should('have.value', '2');\ncy.wait(8000);\n// search 1871 Boston Red Stockings Wright Cabinets #NNO Harry Schafer\ncy.get('input[name=\"search_text\"]').should('be.visible').type('1871 Boston Red Stockings Wright Cabinets #NNO Harry Schafer');\ncy.wait(8000);\ncy.get('#search_submit').should('be.visible').click();\ncy.wait(8000);\ncy.get('li[title=\"1871 Boston Red Stockings Wright Cabinets #NNO Harry Schafer\"]').should('be.visible');\ncy.get('img[alt=\"Remove\"]').first().click();\n/// search 2009\ncy.get('input[name=\"search_text\"]').should('be.visible').type('2009');\ncy.wait(8000);\ncy.get('#search_submit').should('be.visible').click();\ncy.wait(8000);",
+              "err": {},
+              "uuid": "657b3c79-fa8c-4ff5-a0e2-08e97031821b",
+              "parentUUID": "e641dadb-d71e-4ebc-bb77-7404a2c0d5ae",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "657b3c79-fa8c-4ff5-a0e2-08e97031821b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 72354,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "8b31efa4-0f79-4939-b60f-5e9a459a040b",
+      "title": "",
+      "fullFile": "cypress\\e2e\\beckett\\grading\\popreport.cy.js",
+      "file": "cypress\\e2e\\beckett\\grading\\popreport.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d69e635e-c3f1-4c21-8b2c-9f2871412357",
+          "title": "grading pop report",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "pop report ",
+              "fullTitle": "grading pop report pop report ",
+              "timedOut": null,
+              "duration": 49193,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.viewport(1920, 1080);\ncy.visit(\"https://www.beckett.com/\");\ncy.contains('Pop Report').should('be.visible').click();\ncy.get('#sport_id').should('be.visible').select('Baseball');\ncy.get('#set_name').should('be.visible').type('2009 topps');\ncy.get('#player_name').should('be.visible').type('Jordan');\ncy.get('input[name=search]').should('be.visible').click();\ncy.wait(8000);\ncy.get('tbody > :nth-child(1) > :nth-child(5) > a').should('contain.text', '2009 Topps 206 Autographs');\ncy.contains('a', '2009 Topps 206 Mini Framed Autograph').should('be.visible');\ncy.wait(8000);\ncy.get('input[name=\"ViewAllGrades\"]').should('be.visible').click();",
+              "err": {},
+              "uuid": "b508fe03-959d-4888-a316-e203db8b422a",
+              "parentUUID": "d69e635e-c3f1-4c21-8b2c-9f2871412357",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b508fe03-959d-4888-a316-e203db8b422a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 49193,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "936fcf81-d06e-4343-810b-1a7e870843b3",
+      "title": "",
+      "fullFile": "cypress\\e2e\\beckett\\BMP\\bmpSearch.cy.js",
+      "file": "cypress\\e2e\\beckett\\BMP\\bmpSearch.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c47807a9-0c51-41a5-ac9c-cf356dbff491",
+          "title": "BMP search test ",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "BMP Search withhhout login",
+              "fullTitle": "BMP search test  BMP Search withhhout login",
+              "timedOut": null,
+              "duration": 37574,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://marketplace.beckett.com/');\ncy.viewport('macbook-16');\ncy.get('a[aria-label=\"Login\"]').should('be.visible');\ncy.get('input[type=\"radio\"]').should('be.checked');\ncy.get('#siteSearchQuery').should('be.visible').type('2009 topps');\ncy.get('#search_button_opg').should('be.visible').click();\ncy.contains('a', '2009 topps').should('be.visible');\ncy.contains('a', 'Item').should('be.visible').click();\ncy.get('input[name=from]').should('be.visible').type('1');\ncy.get('input[name=to').should('be.visible').type('50');\ncy.get('.apply_ranged_filter').should('be.visible').click();\ncy.contains('a', 'Price').should('be.visible');",
+              "err": {},
+              "uuid": "007336b6-9554-46ce-84bb-09ad3959815d",
+              "parentUUID": "c47807a9-0c51-41a5-ac9c-cf356dbff491",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "007336b6-9554-46ce-84bb-09ad3959815d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 37574,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/beckett",
+        "reportFilename": "report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

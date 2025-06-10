@@ -1,0 +1,126 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-06-10T17:47:01.680Z",
+    "end": "2025-06-10T17:49:32.869Z",
+    "duration": 151189,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "366bc9d4-8518-4cf7-9491-e83845e73482",
+      "title": "",
+      "fullFile": "cypress\\e2e\\beckett\\opg\\opgSearch.cy.js",
+      "file": "cypress\\e2e\\beckett\\opg\\opgSearch.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3b2ff5a1-2973-49ce-82b4-5bbc993708da",
+          "title": "Beckett opg search",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "opg search without login ",
+              "fullTitle": "Beckett opg search opg search without login ",
+              "timedOut": null,
+              "duration": 48201,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/opg');\ncy.get('a.btn.borOne', {\n  timeout: 10000\n}).should('be.visible');\ncy.get('#siteSearchQuery').should('be.visible').click();\ncy.url().should('include', '/online-price-guide');\ncy.get('#siteSearchQuery').should('be.visible').type('jordan');\ncy.contains('Please login to search the Beckett Online Price Guide. ').should('be.visible');",
+              "err": {},
+              "uuid": "1483d3c1-4b3e-4e23-908b-58877c54f6f3",
+              "parentUUID": "3b2ff5a1-2973-49ce-82b4-5bbc993708da",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "opg search with login ",
+              "fullTitle": "Beckett opg search opg search with login ",
+              "timedOut": null,
+              "duration": 98087,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/opg');\ncy.get('div[class=\"LogGridRight\"] a[aria-label=\"Login\"]').should('be.visible').click();\ncy.get('#loginEmail').type('devendras@beckett.com');\ncy.get('#loginPassword', {\n  timeout: 500\n}).type('Dksoni@2716');\ncy.get('#btn_login').click({\n  force: true\n});\ncy.wait(8000);\ncy.url().should('not.include', '/login');\ncy.url().should('include', '/online-price-guide');\ncy.get('#siteSearchQuery').should('be.visible').click();\ncy.get('#siteSearchQuery').should('be.visible').type('1986 Star Michael Jordan');\ncy.get('#search_button_opg').should('be.visible').click();\ncy.get('.bi.bi-filter').should('be.visible').click();\ncy.get('label[for=set_id1]').should('be.visible').click();",
+              "err": {},
+              "uuid": "bfcb9e16-5e37-4a32-b2ed-f829fd1bb28a",
+              "parentUUID": "3b2ff5a1-2973-49ce-82b4-5bbc993708da",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "1483d3c1-4b3e-4e23-908b-58877c54f6f3",
+            "bfcb9e16-5e37-4a32-b2ed-f829fd1bb28a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 146288,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/beckett",
+        "reportFilename": "report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

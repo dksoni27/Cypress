@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "cypress:open": "cypress open",
-    "merge":"mochawesome-merge cypress/reports/beckett1/*.json > output.json",
-    "generate_mochawesome_report": "marge output.json --reportDir ./ --inline",
+    "merge":"mochawesome-merge cypress/reports/beckett/*.json > beckett_output.json",
+    "generate_mochawesome_report": "marge beckett_output.json --reportDir ./ --inline",
     "final_report": "npm run merge && npm run generate_mochawesome_report"
   },
   "author": "",

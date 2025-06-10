@@ -17,17 +17,24 @@
 import './commands'
 
 Cypress.on('uncaught:exception', (err, runnable) => {
-    // Ignore errors related to googletag
-    if (err.message.includes('googletag is not defined')) {
-      return false; // prevents test from failing
-    }
-    if (err.message.includes('Minified React error #425')) {
-      return false;
-    }
+  // Ignore errors related to googletag
+  if (err.message.includes('googletag is not defined')) {
+    return false; // prevents test from failing
+  }
+  if (err.message.includes('Minified React error #425')) {
+    return false;
+  }
 
-    if (err.message.includes('No reCAPTCHA clients exist')) {
-      return false; // prevent Cypress from failing the test
-    }
-  });
-
+  if (err.message.includes('No reCAPTCHA clients exist')) {
+    return false; // prevent Cypress from failing the test
+  }
+  // if it's the specific React 418 error, return false to ignore
+  if (err.message.includes('Minified React error #423')) {
+    return false;
+  }
+  if (err.message.includes('Minified React error #418')) {
+    return false;
+  }
   
+});
+

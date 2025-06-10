@@ -2,6 +2,7 @@ const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
   e2e: {
+    baseUrl:'https://reqres.in/',
     defaultCommandTimeout: 5000,
     viewportWidth: 1000,
     viewportHeight: 600,
@@ -9,7 +10,7 @@ module.exports = defineConfig({
 
     reporter: "mochawesome",
     reporterOptions: {
-      reportDir: "cypress/reports/beckett1",
+      reportDir: "cypress/reports/beckett",
       reportFilename: "report",
       overwrite: false,
       html: true,

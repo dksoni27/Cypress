@@ -1,0 +1,169 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 3,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-06-10T17:50:18.461Z",
+    "end": "2025-06-10T17:51:06.691Z",
+    "duration": 48230,
+    "testsRegistered": 4,
+    "passPercent": 75,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "a7b05b59-74ae-49cc-b1e3-e2600e24e511",
+      "title": "",
+      "fullFile": "cypress\\e2e\\beckett\\login\\login.cy.js",
+      "file": "cypress\\e2e\\beckett\\login\\login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2d273415-a11a-4ad4-936f-e0b7863050b9",
+          "title": "Positive Login Test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "login successfully with valid credentials",
+              "fullTitle": "Positive Login Test login successfully with valid credentials",
+              "timedOut": null,
+              "duration": 20368,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/login');\ncy.Login(email, password);\ncy.url().should('not.include', '/login');\ncy.contains('Logout', {\n  timeout: 10000\n}).should('be.visible');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 5000ms: expected 'https://www.beckett.com/login/' to not include '/login'",
+                "estack": "AssertionError: Timed out retrying after 5000ms: expected 'https://www.beckett.com/login/' to not include '/login'\n    at Context.eval (webpack://cypressautometion/./cypress/e2e/beckett/login/login.cy.js:14:15)",
+                "diff": null
+              },
+              "uuid": "15270f2a-df18-41a8-91a9-1b23ed2f13cb",
+              "parentUUID": "2d273415-a11a-4ad4-936f-e0b7863050b9",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "stay logged in with Remember Me checked",
+              "fullTitle": "Positive Login Test stay logged in with Remember Me checked",
+              "timedOut": null,
+              "duration": 15011,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/login');\ncy.get('#loginEmail').type(email);\ncy.get('#loginPassword').type(password);\ncy.get('.form-check-label').should('be.visible').click();\ncy.get('#btn_login', {\n  timeout: 10000\n}).click();\ncy.url().should('not.include', '/login');\ncy.contains('Logout', {\n  timeout: 10000\n}).should('be.visible');",
+              "err": {},
+              "uuid": "c06bedb3-3b8f-42a8-b81a-69c793d7a31c",
+              "parentUUID": "2d273415-a11a-4ad4-936f-e0b7863050b9",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "display error for incorrect password and email",
+              "fullTitle": "Positive Login Test display error for incorrect password and email",
+              "timedOut": null,
+              "duration": 6540,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/login');\ncy.get('#loginEmail').type(email);\ncy.get('#loginPassword').type(WrongPWD);\ncy.get('#btn_login').click();\ncy.contains(\"We're sorry, but the email or password you entered is incorrect. Please try again.\").should('be.visible');",
+              "err": {},
+              "uuid": "933146fc-7fdc-49ef-b6e6-11c5e7672157",
+              "parentUUID": "2d273415-a11a-4ad4-936f-e0b7863050b9",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "show error when fields are empty",
+              "fullTitle": "Positive Login Test show error when fields are empty",
+              "timedOut": null,
+              "duration": 2602,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.beckett.com/login');\ncy.get('#btn_login').should('be.disabled');",
+              "err": {},
+              "uuid": "6ad4be96-00fe-42b4-b65f-984fcb431c86",
+              "parentUUID": "2d273415-a11a-4ad4-936f-e0b7863050b9",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c06bedb3-3b8f-42a8-b81a-69c793d7a31c",
+            "933146fc-7fdc-49ef-b6e6-11c5e7672157",
+            "6ad4be96-00fe-42b4-b65f-984fcb431c86"
+          ],
+          "failures": [
+            "15270f2a-df18-41a8-91a9-1b23ed2f13cb"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 44521,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/beckett",
+        "reportFilename": "report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

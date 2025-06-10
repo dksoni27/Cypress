@@ -1,0 +1,107 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-06-10T17:54:19.405Z",
+    "end": "2025-06-10T17:55:11.948Z",
+    "duration": 52543,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8b31efa4-0f79-4939-b60f-5e9a459a040b",
+      "title": "",
+      "fullFile": "cypress\\e2e\\beckett\\grading\\popreport.cy.js",
+      "file": "cypress\\e2e\\beckett\\grading\\popreport.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d69e635e-c3f1-4c21-8b2c-9f2871412357",
+          "title": "grading pop report",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "pop report ",
+              "fullTitle": "grading pop report pop report ",
+              "timedOut": null,
+              "duration": 49193,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.viewport(1920, 1080);\ncy.visit(\"https://www.beckett.com/\");\ncy.contains('Pop Report').should('be.visible').click();\ncy.get('#sport_id').should('be.visible').select('Baseball');\ncy.get('#set_name').should('be.visible').type('2009 topps');\ncy.get('#player_name').should('be.visible').type('Jordan');\ncy.get('input[name=search]').should('be.visible').click();\ncy.wait(8000);\ncy.get('tbody > :nth-child(1) > :nth-child(5) > a').should('contain.text', '2009 Topps 206 Autographs');\ncy.contains('a', '2009 Topps 206 Mini Framed Autograph').should('be.visible');\ncy.wait(8000);\ncy.get('input[name=\"ViewAllGrades\"]').should('be.visible').click();",
+              "err": {},
+              "uuid": "b508fe03-959d-4888-a316-e203db8b422a",
+              "parentUUID": "d69e635e-c3f1-4c21-8b2c-9f2871412357",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b508fe03-959d-4888-a316-e203db8b422a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 49193,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/beckett",
+        "reportFilename": "report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
