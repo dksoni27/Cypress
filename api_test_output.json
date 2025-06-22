@@ -1,24 +1,24 @@
 {
   "stats": {
     "suites": 6,
-    "tests": 11,
+    "tests": 10,
     "passes": 10,
     "pending": 0,
-    "failures": 1,
-    "testsRegistered": 11,
-    "passPercent": 90.9090909090909,
+    "failures": 0,
+    "testsRegistered": 10,
+    "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
     "skipped": 0,
     "hasSkipped": false,
-    "start": "2025-06-22T09:25:02.594Z",
-    "end": "2025-06-22T09:25:31.911Z",
-    "duration": 29317
+    "start": "2025-06-22T09:41:34.171Z",
+    "end": "2025-06-22T09:42:01.936Z",
+    "duration": 27765
   },
   "results": [
     {
-      "uuid": "459ddc5f-bb66-4aa2-9c4a-0572f27802a1",
+      "uuid": "22309c2e-4117-4018-975d-7d487e41f66b",
       "title": "",
       "fullFile": "cypress\\e2e\\api_test\\delet.cy.js",
       "file": "cypress\\e2e\\api_test\\delet.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "e9570d06-05bd-46ec-9910-e517137db98a",
+          "uuid": "179c609c-5533-4730-961c-706db93c3b94",
           "title": "delet a user ",
           "fullFile": "",
           "file": "",
@@ -38,29 +38,29 @@
               "title": "post Users",
               "fullTitle": "delet a user  post Users",
               "timedOut": null,
-              "duration": 8611,
+              "duration": 2226,
               "state": "passed",
-              "speed": "medium",
+              "speed": "fast",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "//genreting rendum emails\nvar pattern = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\";\nfor (var i = 0; i < 10; i++) {\n  rendumtext += pattern.charAt(Math.floor(Math.random() * pattern.length));\n  textemail = rendumtext + \"@gmnail.com\";\n}\n// create user for delet\ncy.request({\n  method: \"POST\",\n  url: \"https://gorest.co.in/public/v2/users/\",\n  headers: {\n    Authorization: 'Bearer 3260e4bb2c95687541c997231ee95646ff0d767415fad82d5ff8c11d145d1431',\n    'Content-Type': 'application/json'\n  },\n  // getting data from fixtures file\n  body: {\n    name: rendumtext,\n    email: textemail,\n    gender: \"male\",\n    status: \"active\"\n  }\n}).then(res => {\n  cy.log(JSON.stringify(res));\n  expect(res.status).to.equal(201);\n  expect(res.body).to.have.property('id');\n  expect(res.body.name).to.equal(rendumtext);\n  expect(res.body.gender).to.equal(\"male\");\n  // eleting userID\n  const userID = res.body.id;\n  cy.log(\"user id is : \" + userID);\n  // delete user\n  cy.request({\n    method: 'DELETE',\n    url: 'https://gorest.co.in/public/v1/users/' + userID,\n    headers: {\n      Authorization: 'Bearer 3260e4bb2c95687541c997231ee95646ff0d767415fad82d5ff8c11d145d1431'\n    }\n  }).then(res => {\n    expect(res.status).to.eq(204);\n    //getting user\n    cy.request({\n      method: 'GET',\n      url: 'https://gorest.co.in/public/v1/users/' + userID,\n      failOnStatusCode: false,\n      headers: {\n        Authorization: 'Bearer 3260e4bb2c95687541c997231ee95646ff0d767415fad82d5ff8c11d145d1431'\n      }\n    }).then(res => {\n      expect(res.body.data).has.property('message', 'Resource not found');\n    });\n  });\n});",
               "err": {},
-              "uuid": "45ba1a64-ca2b-4e5e-ae53-443510ea5092",
-              "parentUUID": "e9570d06-05bd-46ec-9910-e517137db98a",
+              "uuid": "f6b906b8-3fac-4170-95d3-f21ada00a6c9",
+              "parentUUID": "179c609c-5533-4730-961c-706db93c3b94",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "45ba1a64-ca2b-4e5e-ae53-443510ea5092"
+            "f6b906b8-3fac-4170-95d3-f21ada00a6c9"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 8611,
+          "duration": 2226,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -76,7 +76,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "c46a60ee-3e41-4dda-8945-8bcb6467fb0c",
+      "uuid": "df4a5028-6cd8-4819-9b50-ee409ff6efc9",
       "title": "",
       "fullFile": "cypress\\e2e\\api_test\\get.cy.js",
       "file": "cypress\\e2e\\api_test\\get.cy.js",
@@ -85,7 +85,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "f9058a16-a2cb-42dd-becf-38865f803cb2",
+          "uuid": "f7e091c4-4d2b-47a8-a442-4e9a005866b6",
           "title": "Beckett bca order  Test",
           "fullFile": "",
           "file": "",
@@ -96,7 +96,7 @@
               "title": "GET API",
               "fullTitle": "Beckett bca order  Test GET API",
               "timedOut": null,
-              "duration": 129,
+              "duration": 137,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -105,8 +105,8 @@
               "context": null,
               "code": "cy.request('https://reqres.in/api/users?page=2').then(res => {\n  expect(res.status).equal(200);\n  expect(res.body.data[0]).has.property('id', 7);\n  expect(res.body.data[1]).has.property('id', 8);\n  expect(res.body.data[2]).has.property('id', 9);\n  expect(res.body.data[3]).has.property('id', 10);\n  expect(res.body.data[4]).has.property('id', 11);\n  expect(res.body.data[5]).has.property('id', 12);\n  expect(res.body.data).has.length(6);\n  expect(res.body.data).not.have.property('price');\n});",
               "err": {},
-              "uuid": "ba33058d-021c-475f-a3ec-a35923cba1c4",
-              "parentUUID": "f9058a16-a2cb-42dd-becf-38865f803cb2",
+              "uuid": "acdad0d1-2c7c-4873-901e-3ba1da860a55",
+              "parentUUID": "f7e091c4-4d2b-47a8-a442-4e9a005866b6",
               "isHook": false,
               "skipped": false
             },
@@ -114,7 +114,7 @@
               "title": "GET API1 ",
               "fullTitle": "Beckett bca order  Test GET API1 ",
               "timedOut": null,
-              "duration": 112,
+              "duration": 96,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -123,21 +123,21 @@
               "context": null,
               "code": "cy.request('https://reqres.in/api/users/2').then(res => {\n  expect(res.status).equal(200);\n  expect(res.body.data).has.property('id', 2);\n  expect(res.body.support).has.property('text', 'Tired of writing endless social media content? Let Content Caddy generate it for you.');\n});",
               "err": {},
-              "uuid": "569d42ca-6221-4cbc-8427-67541c0dcbbb",
-              "parentUUID": "f9058a16-a2cb-42dd-becf-38865f803cb2",
+              "uuid": "b14005cd-dbf2-4889-937c-7d8bf32ae533",
+              "parentUUID": "f7e091c4-4d2b-47a8-a442-4e9a005866b6",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "ba33058d-021c-475f-a3ec-a35923cba1c4",
-            "569d42ca-6221-4cbc-8427-67541c0dcbbb"
+            "acdad0d1-2c7c-4873-901e-3ba1da860a55",
+            "b14005cd-dbf2-4889-937c-7d8bf32ae533"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 241,
+          "duration": 233,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -153,7 +153,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "8755c489-2ed5-4c6a-9915-c5b771d7665c",
+      "uuid": "7bab8b99-e946-4a28-a341-cb48235d611b",
       "title": "",
       "fullFile": "cypress\\e2e\\api_test\\getUser.cy.js",
       "file": "cypress\\e2e\\api_test\\getUser.cy.js",
@@ -162,7 +162,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "e17e479b-ba53-4464-876c-f2ad5b4c6b0a",
+          "uuid": "f26efea6-967e-4192-8dd1-5c0da391320a",
           "title": "get users by api",
           "fullFile": "",
           "file": "",
@@ -173,53 +173,29 @@
               "title": "get Users",
               "fullTitle": "get users by api get Users",
               "timedOut": null,
-              "duration": 597,
+              "duration": 4075,
               "state": "passed",
               "speed": "fast",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "cy.request({\n  method: 'GET',\n  url: 'https://gorest.co.in/public/v2/users',\n  header: {\n    'Authorization': 'Bearer ' + tocken\n  }\n}).then(res => {\n  expect(res.status).to.equal(200);\n  expect(res.body).to.have.length(10);\n  res.body.forEach(user => {\n    expect(user).to.have.all.keys('id', 'name', 'email', 'gender', 'status');\n    expect(user.id).to.be.a('number');\n    expect(user.name).to.be.a('string');\n    expect(user.email).to.be.a('string');\n    expect(user.gender).to.be.oneOf(['male', 'female']);\n    expect(user.status).to.be.oneOf(['active', 'inactive']);\n  });\n});",
+              "code": "cy.request({\n  method: 'GET',\n  url: 'https://gorest.co.in/public/v2/users',\n  header: {\n    'Authorization': 'Bearer ' + tocken\n  }\n}).then(res => {\n  expect(res.status).to.equal(200);\n  expect(res.body).to.have.length(10);\n  res.body.forEach(user => {\n    expect(user).to.have.all.keys('id', 'name', 'email', 'gender', 'status');\n    expect(user.id).to.be.a('number');\n    expect(user.name).to.be.a('string');\n    expect(user.email).to.be.a('string');\n    expect(user.gender).to.be.oneOf(['male', 'female']);\n    expect(user.status).to.be.oneOf(['active', 'inactive']);\n    const users = res.body;\n    const firstUserId = users[0].id;\n    cy.log('First user ID:', firstUserId);\n    cy.request({\n      method: 'GET',\n      url: 'https://gorest.co.in/public/v2/users/' + firstUserId,\n      header: {\n        'Authorization': 'Bearer ' + tocken\n      }\n    }).then(res => {\n      expect(res.status).to.equal(200);\n      const user1 = res.body;\n      const name = user1.name;\n      cy.log(name);\n    });\n  });\n});",
               "err": {},
-              "uuid": "26d6009c-1dbe-4abc-b085-3f09dfa9d7bb",
-              "parentUUID": "e17e479b-ba53-4464-876c-f2ad5b4c6b0a",
-              "isHook": false,
-              "skipped": false
-            },
-            {
-              "title": "get Users by id",
-              "fullTitle": "get users by api get Users by id",
-              "timedOut": null,
-              "duration": 932,
-              "state": "failed",
-              "speed": null,
-              "pass": false,
-              "fail": true,
-              "pending": false,
-              "context": null,
-              "code": "cy.request({\n  method: 'GET',\n  url: 'https://gorest.co.in/public/v2/users/7962136',\n  header: {\n    'Authorization': 'Bearer ' + tocken\n  }\n}).then(res => {\n  expect(res.status).to.equal(200);\n  expect(res.body.name).to.equal('Sharda Panicker VM');\n});",
-              "err": {
-                "message": "CypressError: `cy.request()` failed on:\n\nhttps://gorest.co.in/public/v2/users/7962136\n\nThe response we received from your web server was:\n\n  > 404: Not Found\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: https://gorest.co.in/public/v2/users/7962136\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/14.3.2 Chrome/130.0.6723.137 Electron/33.2.1 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\"\n}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 404 - Not Found\nHeaders: {\n  \"date\": \"Sun, 22 Jun 2025 09:25:17 GMT\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"transfer-encoding\": \"chunked\",\n  \"connection\": \"keep-alive\",\n  \"cache-control\": \"no-cache\",\n  \"feature-policy\": \"camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'\",\n  \"referrer-policy\": \"strict-origin-when-cross-origin\",\n  \"vary\": \"Origin\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-download-options\": \"noopen\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"x-permitted-cross-domain-policies\": \"none\",\n  \"x-request-id\": \"48306462-d2c5-4d67-baf9-a801683dd383\",\n  \"x-runtime\": \"0.018146\",\n  \"x-xss-protection\": \"0\",\n  \"cf-cache-status\": \"DYNAMIC\",\n  \"nel\": \"{\\\"report_to\\\":\\\"cf-nel\\\",\\\"success_fraction\\\":0.0,\\\"max_age\\\":604800}\",\n  \"report-to\": \"{\\\"group\\\":\\\"cf-nel\\\",\\\"max_age\\\":604800,\\\"endpoints\\\":[{\\\"url\\\":\\\"https://a.nel.cloudflare.com/report/v4?s=veGiAWUWOL5Q2g9zBJ2CnLEX6mBI3mk3p26ipyd%2BAE%2FZHZUZgoN7WQ4bw4bSCsZdjR4KD9d%2BHjS%2Fy3Hr6PYTAPpQmH4QPArH%2BJ4%3D\\\"}]}\",\n  \"content-encoding\": \"gzip\",\n  \"server\": \"cloudflare\",\n  \"cf-ray\": \"953ab28e0fcf9a30-FRA\",\n  \"alt-svc\": \"h3=\\\":443\\\"; ma=86400\"\n}\nBody: {\n  \"message\": \"Resource not found\"\n}\n\n\nhttps://on.cypress.io/request",
-                "estack": "CypressError: `cy.request()` failed on:\n\nhttps://gorest.co.in/public/v2/users/7962136\n\nThe response we received from your web server was:\n\n  > 404: Not Found\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: https://gorest.co.in/public/v2/users/7962136\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/14.3.2 Chrome/130.0.6723.137 Electron/33.2.1 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\"\n}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 404 - Not Found\nHeaders: {\n  \"date\": \"Sun, 22 Jun 2025 09:25:17 GMT\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"transfer-encoding\": \"chunked\",\n  \"connection\": \"keep-alive\",\n  \"cache-control\": \"no-cache\",\n  \"feature-policy\": \"camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'\",\n  \"referrer-policy\": \"strict-origin-when-cross-origin\",\n  \"vary\": \"Origin\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-download-options\": \"noopen\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"x-permitted-cross-domain-policies\": \"none\",\n  \"x-request-id\": \"48306462-d2c5-4d67-baf9-a801683dd383\",\n  \"x-runtime\": \"0.018146\",\n  \"x-xss-protection\": \"0\",\n  \"cf-cache-status\": \"DYNAMIC\",\n  \"nel\": \"{\\\"report_to\\\":\\\"cf-nel\\\",\\\"success_fraction\\\":0.0,\\\"max_age\\\":604800}\",\n  \"report-to\": \"{\\\"group\\\":\\\"cf-nel\\\",\\\"max_age\\\":604800,\\\"endpoints\\\":[{\\\"url\\\":\\\"https://a.nel.cloudflare.com/report/v4?s=veGiAWUWOL5Q2g9zBJ2CnLEX6mBI3mk3p26ipyd%2BAE%2FZHZUZgoN7WQ4bw4bSCsZdjR4KD9d%2BHjS%2Fy3Hr6PYTAPpQmH4QPArH%2BJ4%3D\\\"}]}\",\n  \"content-encoding\": \"gzip\",\n  \"server\": \"cloudflare\",\n  \"cf-ray\": \"953ab28e0fcf9a30-FRA\",\n  \"alt-svc\": \"h3=\\\":443\\\"; ma=86400\"\n}\nBody: {\n  \"message\": \"Resource not found\"\n}\n\n\nhttps://on.cypress.io/request\n    at <unknown> (https://reqres.in/__cypress/runner/cypress_runner.js:134979:72)\n    at tryCatcher (https://reqres.in/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (https://reqres.in/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (https://reqres.in/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (https://reqres.in/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://reqres.in/__cypress/runner/cypress_runner.js:1671:18)\n    at _drainQueueStep (https://reqres.in/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (https://reqres.in/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (https://reqres.in/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (https://reqres.in/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypressautometion/./cypress/e2e/api_test/getUser.cy.js:28:11)",
-                "diff": null
-              },
-              "uuid": "f5b3e407-9736-48b1-8faf-86670cefc4a7",
-              "parentUUID": "e17e479b-ba53-4464-876c-f2ad5b4c6b0a",
+              "uuid": "7a093f64-ea1e-4263-a74f-136641b8ecda",
+              "parentUUID": "f26efea6-967e-4192-8dd1-5c0da391320a",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "26d6009c-1dbe-4abc-b085-3f09dfa9d7bb"
+            "7a093f64-ea1e-4263-a74f-136641b8ecda"
           ],
-          "failures": [
-            "f5b3e407-9736-48b1-8faf-86670cefc4a7"
-          ],
+          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 1529,
+          "duration": 4075,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -235,7 +211,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "b434f122-e8e1-48ee-9417-6bd4a87a1f89",
+      "uuid": "b0efa32b-2b58-40fa-aca7-5a96b61eb3d8",
       "title": "",
       "fullFile": "cypress\\e2e\\api_test\\intercept.cy.js",
       "file": "cypress\\e2e\\api_test\\intercept.cy.js",
@@ -244,7 +220,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "28fe0012-8acf-4056-8cea-2e8fed4ab0f4",
+          "uuid": "83d0cc0e-3625-43c1-b067-511ba6a31c59",
           "title": "interseft requset",
           "fullFile": "",
           "file": "",
@@ -255,29 +231,29 @@
               "title": "simple intersept",
               "fullTitle": "interseft requset simple intersept",
               "timedOut": null,
-              "duration": 4720,
+              "duration": 6129,
               "state": "passed",
-              "speed": "fast",
+              "speed": "medium",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.visit('https://jsonplaceholder.typicode.com/');\ncy.intercept({\n  path: '/posts'\n}).as('123');\ncy.get('tbody > :nth-child(1) > :nth-child(1) > a').click();\ncy.wait('@123').then(intr => {\n  cy.log(JSON.stringify(intr));\n  console.log(JSON.stringify(intr));\n  expect(intr.response.body).to.have.length(100);\n});",
               "err": {},
-              "uuid": "5de24139-83b7-4cf0-8e5c-9a50a8afadae",
-              "parentUUID": "28fe0012-8acf-4056-8cea-2e8fed4ab0f4",
+              "uuid": "7f50362c-5bae-4be4-ad40-ba4e8d00ff7b",
+              "parentUUID": "83d0cc0e-3625-43c1-b067-511ba6a31c59",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "5de24139-83b7-4cf0-8e5c-9a50a8afadae"
+            "7f50362c-5bae-4be4-ad40-ba4e8d00ff7b"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 4720,
+          "duration": 6129,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -293,7 +269,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "3d977a36-c899-4447-a155-1728f03e2849",
+      "uuid": "c5731002-7c5b-4bdb-ab54-22fcd214b315",
       "title": "",
       "fullFile": "cypress\\e2e\\api_test\\post.cy.js",
       "file": "cypress\\e2e\\api_test\\post.cy.js",
@@ -302,7 +278,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "e858a595-0871-445d-813a-3fe769900462",
+          "uuid": "e54c6ac2-7e7a-4860-a90d-4023514114e1",
           "title": "Create new user using POST",
           "fullFile": "",
           "file": "",
@@ -313,7 +289,7 @@
               "title": "post Users",
               "fullTitle": "Create new user using POST post Users",
               "timedOut": null,
-              "duration": 867,
+              "duration": 834,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -322,20 +298,20 @@
               "context": null,
               "code": "//genreting rendum emails\nvar pattern = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\";\nfor (var i = 0; i < 10; i++) {\n  rendumtext += pattern.charAt(Math.floor(Math.random() * pattern.length));\n  textemail = rendumtext + \"@gmnail.com\";\n}\ncy.request({\n  method: \"POST\",\n  url: \"https://gorest.co.in/public/v2/users\",\n  headers: {\n    Authorization: \"Bearer 3260e4bb2c95687541c997231ee95646ff0d767415fad82d5ff8c11d145d1431\",\n    'Content-Type': 'application/json'\n  },\n  // getting data from fixtures file\n  body: {\n    name: data.name,\n    email: textemail,\n    gender: data.gender,\n    status: data.status\n  }\n}).then(res => {\n  cy.log(JSON.stringify(res));\n  expect(res.status).to.equal(201);\n  expect(res.body).to.have.property('id');\n  expect(res.body.name).to.equal(data.name);\n  expect(res.body.gender).to.equal(data.gender);\n});",
               "err": {},
-              "uuid": "b3b706dd-2b3c-4d84-938a-96d40799494a",
-              "parentUUID": "e858a595-0871-445d-813a-3fe769900462",
+              "uuid": "83a08e37-c3c7-46b6-ac69-cc819bece87f",
+              "parentUUID": "e54c6ac2-7e7a-4860-a90d-4023514114e1",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "b3b706dd-2b3c-4d84-938a-96d40799494a"
+            "83a08e37-c3c7-46b6-ac69-cc819bece87f"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 867,
+          "duration": 834,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -351,7 +327,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "a93d3862-0d2a-47a0-a0fb-94fbc2111ed4",
+      "uuid": "b44823ec-e6d8-4a6c-a2e5-2e7f68f91c77",
       "title": "",
       "fullFile": "cypress\\e2e\\api_test\\api_test_alia.cy.js",
       "file": "cypress\\e2e\\api_test\\api_test_alia.cy.js",
@@ -360,7 +336,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "10b9831a-b9aa-4ffc-87a0-76644f37d447",
+          "uuid": "ff2b4d99-b1ac-495c-8c1d-731dad016446",
           "title": "api testing with alias",
           "fullFile": "",
           "file": "",
@@ -371,7 +347,7 @@
               "title": "velidate header info ",
               "fullTitle": "api testing with alias velidate header info ",
               "timedOut": null,
-              "duration": 341,
+              "duration": 300,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -380,8 +356,8 @@
               "context": null,
               "code": "cy.get('@users').should(res => {\n  expect(res.status).equal(200);\n});",
               "err": {},
-              "uuid": "c72fbc9b-661a-40a8-b972-50aec2603318",
-              "parentUUID": "10b9831a-b9aa-4ffc-87a0-76644f37d447",
+              "uuid": "c018163d-e087-4c27-bcae-3fcd82672e08",
+              "parentUUID": "ff2b4d99-b1ac-495c-8c1d-731dad016446",
               "isHook": false,
               "skipped": false
             },
@@ -389,7 +365,7 @@
               "title": "velidate header info ",
               "fullTitle": "api testing with alias velidate header info ",
               "timedOut": null,
-              "duration": 116,
+              "duration": 103,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -398,8 +374,8 @@
               "context": null,
               "code": "cy.get('@users').its('headers').its('connection').should('include', 'keep-alive');",
               "err": {},
-              "uuid": "17aff98d-4d3a-4856-aed7-02d33ebdfedf",
-              "parentUUID": "10b9831a-b9aa-4ffc-87a0-76644f37d447",
+              "uuid": "cf2943fb-288f-4cf2-9170-02618102c5df",
+              "parentUUID": "ff2b4d99-b1ac-495c-8c1d-731dad016446",
               "isHook": false,
               "skipped": false
             },
@@ -407,7 +383,7 @@
               "title": "velidate body info ",
               "fullTitle": "api testing with alias velidate body info ",
               "timedOut": null,
-              "duration": 115,
+              "duration": 106,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -416,8 +392,8 @@
               "context": null,
               "code": "cy.get('@users').its('body').should('contain', {\n  'total_pages': 2\n});",
               "err": {},
-              "uuid": "f142ed2b-cc46-4970-88c1-ad49fa629220",
-              "parentUUID": "10b9831a-b9aa-4ffc-87a0-76644f37d447",
+              "uuid": "9862ca13-e71a-47fd-9ecc-0fd69a980f47",
+              "parentUUID": "ff2b4d99-b1ac-495c-8c1d-731dad016446",
               "isHook": false,
               "skipped": false
             },
@@ -425,7 +401,7 @@
               "title": "velidate body info array ",
               "fullTitle": "api testing with alias velidate body info array ",
               "timedOut": null,
-              "duration": 105,
+              "duration": 84,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -434,23 +410,23 @@
               "context": null,
               "code": "cy.get('@users').its('body').then(res => {\n  expect(res.data[0]).has.property('id', 7);\n});",
               "err": {},
-              "uuid": "3e2ac9c9-518a-4f2d-874c-d31aab9fbfec",
-              "parentUUID": "10b9831a-b9aa-4ffc-87a0-76644f37d447",
+              "uuid": "77b34d14-6a16-4c53-a16c-b2922fa8bdb3",
+              "parentUUID": "ff2b4d99-b1ac-495c-8c1d-731dad016446",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "c72fbc9b-661a-40a8-b972-50aec2603318",
-            "17aff98d-4d3a-4856-aed7-02d33ebdfedf",
-            "f142ed2b-cc46-4970-88c1-ad49fa629220",
-            "3e2ac9c9-518a-4f2d-874c-d31aab9fbfec"
+            "c018163d-e087-4c27-bcae-3fcd82672e08",
+            "cf2943fb-288f-4cf2-9170-02618102c5df",
+            "9862ca13-e71a-47fd-9ecc-0fd69a980f47",
+            "77b34d14-6a16-4c53-a16c-b2922fa8bdb3"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 677,
+          "duration": 593,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

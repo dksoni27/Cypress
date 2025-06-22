@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2025-06-22T09:25:21.706Z",
-    "end": "2025-06-22T09:25:28.976Z",
-    "duration": 7270,
+    "start": "2025-06-22T09:41:48.639Z",
+    "end": "2025-06-22T09:41:58.549Z",
+    "duration": 9910,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "b434f122-e8e1-48ee-9417-6bd4a87a1f89",
+      "uuid": "b0efa32b-2b58-40fa-aca7-5a96b61eb3d8",
       "title": "",
       "fullFile": "cypress\\e2e\\api_test\\intercept.cy.js",
       "file": "cypress\\e2e\\api_test\\intercept.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "28fe0012-8acf-4056-8cea-2e8fed4ab0f4",
+          "uuid": "83d0cc0e-3625-43c1-b067-511ba6a31c59",
           "title": "interseft requset",
           "fullFile": "",
           "file": "",
@@ -38,29 +38,29 @@
               "title": "simple intersept",
               "fullTitle": "interseft requset simple intersept",
               "timedOut": null,
-              "duration": 4720,
+              "duration": 6129,
               "state": "passed",
-              "speed": "fast",
+              "speed": "medium",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.visit('https://jsonplaceholder.typicode.com/');\ncy.intercept({\n  path: '/posts'\n}).as('123');\ncy.get('tbody > :nth-child(1) > :nth-child(1) > a').click();\ncy.wait('@123').then(intr => {\n  cy.log(JSON.stringify(intr));\n  console.log(JSON.stringify(intr));\n  expect(intr.response.body).to.have.length(100);\n});",
               "err": {},
-              "uuid": "5de24139-83b7-4cf0-8e5c-9a50a8afadae",
-              "parentUUID": "28fe0012-8acf-4056-8cea-2e8fed4ab0f4",
+              "uuid": "7f50362c-5bae-4be4-ad40-ba4e8d00ff7b",
+              "parentUUID": "83d0cc0e-3625-43c1-b067-511ba6a31c59",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "5de24139-83b7-4cf0-8e5c-9a50a8afadae"
+            "7f50362c-5bae-4be4-ad40-ba4e8d00ff7b"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 4720,
+          "duration": 6129,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

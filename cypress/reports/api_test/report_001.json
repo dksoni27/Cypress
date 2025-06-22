@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2025-06-22T09:25:05.122Z",
-    "end": "2025-06-22T09:25:13.774Z",
-    "duration": 8652,
+    "start": "2025-06-22T09:41:36.647Z",
+    "end": "2025-06-22T09:41:38.902Z",
+    "duration": 2255,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "459ddc5f-bb66-4aa2-9c4a-0572f27802a1",
+      "uuid": "22309c2e-4117-4018-975d-7d487e41f66b",
       "title": "",
       "fullFile": "cypress\\e2e\\api_test\\delet.cy.js",
       "file": "cypress\\e2e\\api_test\\delet.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "e9570d06-05bd-46ec-9910-e517137db98a",
+          "uuid": "179c609c-5533-4730-961c-706db93c3b94",
           "title": "delet a user ",
           "fullFile": "",
           "file": "",
@@ -38,29 +38,29 @@
               "title": "post Users",
               "fullTitle": "delet a user  post Users",
               "timedOut": null,
-              "duration": 8611,
+              "duration": 2226,
               "state": "passed",
-              "speed": "medium",
+              "speed": "fast",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "//genreting rendum emails\nvar pattern = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\";\nfor (var i = 0; i < 10; i++) {\n  rendumtext += pattern.charAt(Math.floor(Math.random() * pattern.length));\n  textemail = rendumtext + \"@gmnail.com\";\n}\n// create user for delet\ncy.request({\n  method: \"POST\",\n  url: \"https://gorest.co.in/public/v2/users/\",\n  headers: {\n    Authorization: 'Bearer 3260e4bb2c95687541c997231ee95646ff0d767415fad82d5ff8c11d145d1431',\n    'Content-Type': 'application/json'\n  },\n  // getting data from fixtures file\n  body: {\n    name: rendumtext,\n    email: textemail,\n    gender: \"male\",\n    status: \"active\"\n  }\n}).then(res => {\n  cy.log(JSON.stringify(res));\n  expect(res.status).to.equal(201);\n  expect(res.body).to.have.property('id');\n  expect(res.body.name).to.equal(rendumtext);\n  expect(res.body.gender).to.equal(\"male\");\n  // eleting userID\n  const userID = res.body.id;\n  cy.log(\"user id is : \" + userID);\n  // delete user\n  cy.request({\n    method: 'DELETE',\n    url: 'https://gorest.co.in/public/v1/users/' + userID,\n    headers: {\n      Authorization: 'Bearer 3260e4bb2c95687541c997231ee95646ff0d767415fad82d5ff8c11d145d1431'\n    }\n  }).then(res => {\n    expect(res.status).to.eq(204);\n    //getting user\n    cy.request({\n      method: 'GET',\n      url: 'https://gorest.co.in/public/v1/users/' + userID,\n      failOnStatusCode: false,\n      headers: {\n        Authorization: 'Bearer 3260e4bb2c95687541c997231ee95646ff0d767415fad82d5ff8c11d145d1431'\n      }\n    }).then(res => {\n      expect(res.body.data).has.property('message', 'Resource not found');\n    });\n  });\n});",
               "err": {},
-              "uuid": "45ba1a64-ca2b-4e5e-ae53-443510ea5092",
-              "parentUUID": "e9570d06-05bd-46ec-9910-e517137db98a",
+              "uuid": "f6b906b8-3fac-4170-95d3-f21ada00a6c9",
+              "parentUUID": "179c609c-5533-4730-961c-706db93c3b94",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "45ba1a64-ca2b-4e5e-ae53-443510ea5092"
+            "f6b906b8-3fac-4170-95d3-f21ada00a6c9"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 8611,
+          "duration": 2226,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

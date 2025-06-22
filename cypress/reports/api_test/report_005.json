@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2025-06-22T09:25:30.997Z",
-    "end": "2025-06-22T09:25:31.911Z",
-    "duration": 914,
+    "start": "2025-06-22T09:42:01.051Z",
+    "end": "2025-06-22T09:42:01.936Z",
+    "duration": 885,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "3d977a36-c899-4447-a155-1728f03e2849",
+      "uuid": "c5731002-7c5b-4bdb-ab54-22fcd214b315",
       "title": "",
       "fullFile": "cypress\\e2e\\api_test\\post.cy.js",
       "file": "cypress\\e2e\\api_test\\post.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "e858a595-0871-445d-813a-3fe769900462",
+          "uuid": "e54c6ac2-7e7a-4860-a90d-4023514114e1",
           "title": "Create new user using POST",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "post Users",
               "fullTitle": "Create new user using POST post Users",
               "timedOut": null,
-              "duration": 867,
+              "duration": 834,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "//genreting rendum emails\nvar pattern = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\";\nfor (var i = 0; i < 10; i++) {\n  rendumtext += pattern.charAt(Math.floor(Math.random() * pattern.length));\n  textemail = rendumtext + \"@gmnail.com\";\n}\ncy.request({\n  method: \"POST\",\n  url: \"https://gorest.co.in/public/v2/users\",\n  headers: {\n    Authorization: \"Bearer 3260e4bb2c95687541c997231ee95646ff0d767415fad82d5ff8c11d145d1431\",\n    'Content-Type': 'application/json'\n  },\n  // getting data from fixtures file\n  body: {\n    name: data.name,\n    email: textemail,\n    gender: data.gender,\n    status: data.status\n  }\n}).then(res => {\n  cy.log(JSON.stringify(res));\n  expect(res.status).to.equal(201);\n  expect(res.body).to.have.property('id');\n  expect(res.body.name).to.equal(data.name);\n  expect(res.body.gender).to.equal(data.gender);\n});",
               "err": {},
-              "uuid": "b3b706dd-2b3c-4d84-938a-96d40799494a",
-              "parentUUID": "e858a595-0871-445d-813a-3fe769900462",
+              "uuid": "83a08e37-c3c7-46b6-ac69-cc819bece87f",
+              "parentUUID": "e54c6ac2-7e7a-4860-a90d-4023514114e1",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "b3b706dd-2b3c-4d84-938a-96d40799494a"
+            "83a08e37-c3c7-46b6-ac69-cc819bece87f"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 867,
+          "duration": 834,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
