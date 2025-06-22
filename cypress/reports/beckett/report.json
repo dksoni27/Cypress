@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2025-06-10T17:44:28.924Z",
-    "end": "2025-06-10T17:45:10.802Z",
-    "duration": 41878,
+    "start": "2025-06-21T13:53:00.994Z",
+    "end": "2025-06-21T13:53:33.622Z",
+    "duration": 32628,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "936fcf81-d06e-4343-810b-1a7e870843b3",
+      "uuid": "a70aebb1-a411-411c-96e8-be286fd77edd",
       "title": "",
       "fullFile": "cypress\\e2e\\beckett\\BMP\\bmpSearch.cy.js",
       "file": "cypress\\e2e\\beckett\\BMP\\bmpSearch.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "c47807a9-0c51-41a5-ac9c-cf356dbff491",
+          "uuid": "b49de749-7959-43d1-be2c-88ac92f1a1c0",
           "title": "BMP search test ",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "BMP Search withhhout login",
               "fullTitle": "BMP search test  BMP Search withhhout login",
               "timedOut": null,
-              "duration": 37574,
+              "duration": 29235,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "cy.visit('https://marketplace.beckett.com/');\ncy.viewport('macbook-16');\ncy.get('a[aria-label=\"Login\"]').should('be.visible');\ncy.get('input[type=\"radio\"]').should('be.checked');\ncy.get('#siteSearchQuery').should('be.visible').type('2009 topps');\ncy.get('#search_button_opg').should('be.visible').click();\ncy.contains('a', '2009 topps').should('be.visible');\ncy.contains('a', 'Item').should('be.visible').click();\ncy.get('input[name=from]').should('be.visible').type('1');\ncy.get('input[name=to').should('be.visible').type('50');\ncy.get('.apply_ranged_filter').should('be.visible').click();\ncy.contains('a', 'Price').should('be.visible');",
               "err": {},
-              "uuid": "007336b6-9554-46ce-84bb-09ad3959815d",
-              "parentUUID": "c47807a9-0c51-41a5-ac9c-cf356dbff491",
+              "uuid": "a7443b86-6eac-488f-a15f-deb63659f79d",
+              "parentUUID": "b49de749-7959-43d1-be2c-88ac92f1a1c0",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "007336b6-9554-46ce-84bb-09ad3959815d"
+            "a7443b86-6eac-488f-a15f-deb63659f79d"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 37574,
+          "duration": 29235,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

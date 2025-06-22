@@ -1,0 +1,497 @@
+{
+  "stats": {
+    "suites": 6,
+    "tests": 11,
+    "passes": 10,
+    "pending": 0,
+    "failures": 1,
+    "testsRegistered": 11,
+    "passPercent": 90.9090909090909,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "start": "2025-06-22T09:25:02.594Z",
+    "end": "2025-06-22T09:25:31.911Z",
+    "duration": 29317
+  },
+  "results": [
+    {
+      "uuid": "459ddc5f-bb66-4aa2-9c4a-0572f27802a1",
+      "title": "",
+      "fullFile": "cypress\\e2e\\api_test\\delet.cy.js",
+      "file": "cypress\\e2e\\api_test\\delet.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e9570d06-05bd-46ec-9910-e517137db98a",
+          "title": "delet a user ",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "post Users",
+              "fullTitle": "delet a user  post Users",
+              "timedOut": null,
+              "duration": 8611,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//genreting rendum emails\nvar pattern = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\";\nfor (var i = 0; i < 10; i++) {\n  rendumtext += pattern.charAt(Math.floor(Math.random() * pattern.length));\n  textemail = rendumtext + \"@gmnail.com\";\n}\n// create user for delet\ncy.request({\n  method: \"POST\",\n  url: \"https://gorest.co.in/public/v2/users/\",\n  headers: {\n    Authorization: 'Bearer 3260e4bb2c95687541c997231ee95646ff0d767415fad82d5ff8c11d145d1431',\n    'Content-Type': 'application/json'\n  },\n  // getting data from fixtures file\n  body: {\n    name: rendumtext,\n    email: textemail,\n    gender: \"male\",\n    status: \"active\"\n  }\n}).then(res => {\n  cy.log(JSON.stringify(res));\n  expect(res.status).to.equal(201);\n  expect(res.body).to.have.property('id');\n  expect(res.body.name).to.equal(rendumtext);\n  expect(res.body.gender).to.equal(\"male\");\n  // eleting userID\n  const userID = res.body.id;\n  cy.log(\"user id is : \" + userID);\n  // delete user\n  cy.request({\n    method: 'DELETE',\n    url: 'https://gorest.co.in/public/v1/users/' + userID,\n    headers: {\n      Authorization: 'Bearer 3260e4bb2c95687541c997231ee95646ff0d767415fad82d5ff8c11d145d1431'\n    }\n  }).then(res => {\n    expect(res.status).to.eq(204);\n    //getting user\n    cy.request({\n      method: 'GET',\n      url: 'https://gorest.co.in/public/v1/users/' + userID,\n      failOnStatusCode: false,\n      headers: {\n        Authorization: 'Bearer 3260e4bb2c95687541c997231ee95646ff0d767415fad82d5ff8c11d145d1431'\n      }\n    }).then(res => {\n      expect(res.body.data).has.property('message', 'Resource not found');\n    });\n  });\n});",
+              "err": {},
+              "uuid": "45ba1a64-ca2b-4e5e-ae53-443510ea5092",
+              "parentUUID": "e9570d06-05bd-46ec-9910-e517137db98a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "45ba1a64-ca2b-4e5e-ae53-443510ea5092"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8611,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "c46a60ee-3e41-4dda-8945-8bcb6467fb0c",
+      "title": "",
+      "fullFile": "cypress\\e2e\\api_test\\get.cy.js",
+      "file": "cypress\\e2e\\api_test\\get.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f9058a16-a2cb-42dd-becf-38865f803cb2",
+          "title": "Beckett bca order  Test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "GET API",
+              "fullTitle": "Beckett bca order  Test GET API",
+              "timedOut": null,
+              "duration": 129,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('https://reqres.in/api/users?page=2').then(res => {\n  expect(res.status).equal(200);\n  expect(res.body.data[0]).has.property('id', 7);\n  expect(res.body.data[1]).has.property('id', 8);\n  expect(res.body.data[2]).has.property('id', 9);\n  expect(res.body.data[3]).has.property('id', 10);\n  expect(res.body.data[4]).has.property('id', 11);\n  expect(res.body.data[5]).has.property('id', 12);\n  expect(res.body.data).has.length(6);\n  expect(res.body.data).not.have.property('price');\n});",
+              "err": {},
+              "uuid": "ba33058d-021c-475f-a3ec-a35923cba1c4",
+              "parentUUID": "f9058a16-a2cb-42dd-becf-38865f803cb2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "GET API1 ",
+              "fullTitle": "Beckett bca order  Test GET API1 ",
+              "timedOut": null,
+              "duration": 112,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('https://reqres.in/api/users/2').then(res => {\n  expect(res.status).equal(200);\n  expect(res.body.data).has.property('id', 2);\n  expect(res.body.support).has.property('text', 'Tired of writing endless social media content? Let Content Caddy generate it for you.');\n});",
+              "err": {},
+              "uuid": "569d42ca-6221-4cbc-8427-67541c0dcbbb",
+              "parentUUID": "f9058a16-a2cb-42dd-becf-38865f803cb2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ba33058d-021c-475f-a3ec-a35923cba1c4",
+            "569d42ca-6221-4cbc-8427-67541c0dcbbb"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 241,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "8755c489-2ed5-4c6a-9915-c5b771d7665c",
+      "title": "",
+      "fullFile": "cypress\\e2e\\api_test\\getUser.cy.js",
+      "file": "cypress\\e2e\\api_test\\getUser.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e17e479b-ba53-4464-876c-f2ad5b4c6b0a",
+          "title": "get users by api",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "get Users",
+              "fullTitle": "get users by api get Users",
+              "timedOut": null,
+              "duration": 597,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: 'https://gorest.co.in/public/v2/users',\n  header: {\n    'Authorization': 'Bearer ' + tocken\n  }\n}).then(res => {\n  expect(res.status).to.equal(200);\n  expect(res.body).to.have.length(10);\n  res.body.forEach(user => {\n    expect(user).to.have.all.keys('id', 'name', 'email', 'gender', 'status');\n    expect(user.id).to.be.a('number');\n    expect(user.name).to.be.a('string');\n    expect(user.email).to.be.a('string');\n    expect(user.gender).to.be.oneOf(['male', 'female']);\n    expect(user.status).to.be.oneOf(['active', 'inactive']);\n  });\n});",
+              "err": {},
+              "uuid": "26d6009c-1dbe-4abc-b085-3f09dfa9d7bb",
+              "parentUUID": "e17e479b-ba53-4464-876c-f2ad5b4c6b0a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "get Users by id",
+              "fullTitle": "get users by api get Users by id",
+              "timedOut": null,
+              "duration": 932,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: 'https://gorest.co.in/public/v2/users/7962136',\n  header: {\n    'Authorization': 'Bearer ' + tocken\n  }\n}).then(res => {\n  expect(res.status).to.equal(200);\n  expect(res.body.name).to.equal('Sharda Panicker VM');\n});",
+              "err": {
+                "message": "CypressError: `cy.request()` failed on:\n\nhttps://gorest.co.in/public/v2/users/7962136\n\nThe response we received from your web server was:\n\n  > 404: Not Found\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: https://gorest.co.in/public/v2/users/7962136\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/14.3.2 Chrome/130.0.6723.137 Electron/33.2.1 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\"\n}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 404 - Not Found\nHeaders: {\n  \"date\": \"Sun, 22 Jun 2025 09:25:17 GMT\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"transfer-encoding\": \"chunked\",\n  \"connection\": \"keep-alive\",\n  \"cache-control\": \"no-cache\",\n  \"feature-policy\": \"camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'\",\n  \"referrer-policy\": \"strict-origin-when-cross-origin\",\n  \"vary\": \"Origin\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-download-options\": \"noopen\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"x-permitted-cross-domain-policies\": \"none\",\n  \"x-request-id\": \"48306462-d2c5-4d67-baf9-a801683dd383\",\n  \"x-runtime\": \"0.018146\",\n  \"x-xss-protection\": \"0\",\n  \"cf-cache-status\": \"DYNAMIC\",\n  \"nel\": \"{\\\"report_to\\\":\\\"cf-nel\\\",\\\"success_fraction\\\":0.0,\\\"max_age\\\":604800}\",\n  \"report-to\": \"{\\\"group\\\":\\\"cf-nel\\\",\\\"max_age\\\":604800,\\\"endpoints\\\":[{\\\"url\\\":\\\"https://a.nel.cloudflare.com/report/v4?s=veGiAWUWOL5Q2g9zBJ2CnLEX6mBI3mk3p26ipyd%2BAE%2FZHZUZgoN7WQ4bw4bSCsZdjR4KD9d%2BHjS%2Fy3Hr6PYTAPpQmH4QPArH%2BJ4%3D\\\"}]}\",\n  \"content-encoding\": \"gzip\",\n  \"server\": \"cloudflare\",\n  \"cf-ray\": \"953ab28e0fcf9a30-FRA\",\n  \"alt-svc\": \"h3=\\\":443\\\"; ma=86400\"\n}\nBody: {\n  \"message\": \"Resource not found\"\n}\n\n\nhttps://on.cypress.io/request",
+                "estack": "CypressError: `cy.request()` failed on:\n\nhttps://gorest.co.in/public/v2/users/7962136\n\nThe response we received from your web server was:\n\n  > 404: Not Found\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: https://gorest.co.in/public/v2/users/7962136\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/14.3.2 Chrome/130.0.6723.137 Electron/33.2.1 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\"\n}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 404 - Not Found\nHeaders: {\n  \"date\": \"Sun, 22 Jun 2025 09:25:17 GMT\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"transfer-encoding\": \"chunked\",\n  \"connection\": \"keep-alive\",\n  \"cache-control\": \"no-cache\",\n  \"feature-policy\": \"camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'\",\n  \"referrer-policy\": \"strict-origin-when-cross-origin\",\n  \"vary\": \"Origin\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-download-options\": \"noopen\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"x-permitted-cross-domain-policies\": \"none\",\n  \"x-request-id\": \"48306462-d2c5-4d67-baf9-a801683dd383\",\n  \"x-runtime\": \"0.018146\",\n  \"x-xss-protection\": \"0\",\n  \"cf-cache-status\": \"DYNAMIC\",\n  \"nel\": \"{\\\"report_to\\\":\\\"cf-nel\\\",\\\"success_fraction\\\":0.0,\\\"max_age\\\":604800}\",\n  \"report-to\": \"{\\\"group\\\":\\\"cf-nel\\\",\\\"max_age\\\":604800,\\\"endpoints\\\":[{\\\"url\\\":\\\"https://a.nel.cloudflare.com/report/v4?s=veGiAWUWOL5Q2g9zBJ2CnLEX6mBI3mk3p26ipyd%2BAE%2FZHZUZgoN7WQ4bw4bSCsZdjR4KD9d%2BHjS%2Fy3Hr6PYTAPpQmH4QPArH%2BJ4%3D\\\"}]}\",\n  \"content-encoding\": \"gzip\",\n  \"server\": \"cloudflare\",\n  \"cf-ray\": \"953ab28e0fcf9a30-FRA\",\n  \"alt-svc\": \"h3=\\\":443\\\"; ma=86400\"\n}\nBody: {\n  \"message\": \"Resource not found\"\n}\n\n\nhttps://on.cypress.io/request\n    at <unknown> (https://reqres.in/__cypress/runner/cypress_runner.js:134979:72)\n    at tryCatcher (https://reqres.in/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (https://reqres.in/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (https://reqres.in/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (https://reqres.in/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://reqres.in/__cypress/runner/cypress_runner.js:1671:18)\n    at _drainQueueStep (https://reqres.in/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (https://reqres.in/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (https://reqres.in/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (https://reqres.in/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypressautometion/./cypress/e2e/api_test/getUser.cy.js:28:11)",
+                "diff": null
+              },
+              "uuid": "f5b3e407-9736-48b1-8faf-86670cefc4a7",
+              "parentUUID": "e17e479b-ba53-4464-876c-f2ad5b4c6b0a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "26d6009c-1dbe-4abc-b085-3f09dfa9d7bb"
+          ],
+          "failures": [
+            "f5b3e407-9736-48b1-8faf-86670cefc4a7"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 1529,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "b434f122-e8e1-48ee-9417-6bd4a87a1f89",
+      "title": "",
+      "fullFile": "cypress\\e2e\\api_test\\intercept.cy.js",
+      "file": "cypress\\e2e\\api_test\\intercept.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "28fe0012-8acf-4056-8cea-2e8fed4ab0f4",
+          "title": "interseft requset",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "simple intersept",
+              "fullTitle": "interseft requset simple intersept",
+              "timedOut": null,
+              "duration": 4720,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://jsonplaceholder.typicode.com/');\ncy.intercept({\n  path: '/posts'\n}).as('123');\ncy.get('tbody > :nth-child(1) > :nth-child(1) > a').click();\ncy.wait('@123').then(intr => {\n  cy.log(JSON.stringify(intr));\n  console.log(JSON.stringify(intr));\n  expect(intr.response.body).to.have.length(100);\n});",
+              "err": {},
+              "uuid": "5de24139-83b7-4cf0-8e5c-9a50a8afadae",
+              "parentUUID": "28fe0012-8acf-4056-8cea-2e8fed4ab0f4",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5de24139-83b7-4cf0-8e5c-9a50a8afadae"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4720,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "3d977a36-c899-4447-a155-1728f03e2849",
+      "title": "",
+      "fullFile": "cypress\\e2e\\api_test\\post.cy.js",
+      "file": "cypress\\e2e\\api_test\\post.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e858a595-0871-445d-813a-3fe769900462",
+          "title": "Create new user using POST",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "post Users",
+              "fullTitle": "Create new user using POST post Users",
+              "timedOut": null,
+              "duration": 867,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//genreting rendum emails\nvar pattern = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\";\nfor (var i = 0; i < 10; i++) {\n  rendumtext += pattern.charAt(Math.floor(Math.random() * pattern.length));\n  textemail = rendumtext + \"@gmnail.com\";\n}\ncy.request({\n  method: \"POST\",\n  url: \"https://gorest.co.in/public/v2/users\",\n  headers: {\n    Authorization: \"Bearer 3260e4bb2c95687541c997231ee95646ff0d767415fad82d5ff8c11d145d1431\",\n    'Content-Type': 'application/json'\n  },\n  // getting data from fixtures file\n  body: {\n    name: data.name,\n    email: textemail,\n    gender: data.gender,\n    status: data.status\n  }\n}).then(res => {\n  cy.log(JSON.stringify(res));\n  expect(res.status).to.equal(201);\n  expect(res.body).to.have.property('id');\n  expect(res.body.name).to.equal(data.name);\n  expect(res.body.gender).to.equal(data.gender);\n});",
+              "err": {},
+              "uuid": "b3b706dd-2b3c-4d84-938a-96d40799494a",
+              "parentUUID": "e858a595-0871-445d-813a-3fe769900462",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b3b706dd-2b3c-4d84-938a-96d40799494a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 867,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "a93d3862-0d2a-47a0-a0fb-94fbc2111ed4",
+      "title": "",
+      "fullFile": "cypress\\e2e\\api_test\\api_test_alia.cy.js",
+      "file": "cypress\\e2e\\api_test\\api_test_alia.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "10b9831a-b9aa-4ffc-87a0-76644f37d447",
+          "title": "api testing with alias",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "velidate header info ",
+              "fullTitle": "api testing with alias velidate header info ",
+              "timedOut": null,
+              "duration": 341,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('@users').should(res => {\n  expect(res.status).equal(200);\n});",
+              "err": {},
+              "uuid": "c72fbc9b-661a-40a8-b972-50aec2603318",
+              "parentUUID": "10b9831a-b9aa-4ffc-87a0-76644f37d447",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "velidate header info ",
+              "fullTitle": "api testing with alias velidate header info ",
+              "timedOut": null,
+              "duration": 116,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('@users').its('headers').its('connection').should('include', 'keep-alive');",
+              "err": {},
+              "uuid": "17aff98d-4d3a-4856-aed7-02d33ebdfedf",
+              "parentUUID": "10b9831a-b9aa-4ffc-87a0-76644f37d447",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "velidate body info ",
+              "fullTitle": "api testing with alias velidate body info ",
+              "timedOut": null,
+              "duration": 115,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('@users').its('body').should('contain', {\n  'total_pages': 2\n});",
+              "err": {},
+              "uuid": "f142ed2b-cc46-4970-88c1-ad49fa629220",
+              "parentUUID": "10b9831a-b9aa-4ffc-87a0-76644f37d447",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "velidate body info array ",
+              "fullTitle": "api testing with alias velidate body info array ",
+              "timedOut": null,
+              "duration": 105,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('@users').its('body').then(res => {\n  expect(res.data[0]).has.property('id', 7);\n});",
+              "err": {},
+              "uuid": "3e2ac9c9-518a-4f2d-874c-d31aab9fbfec",
+              "parentUUID": "10b9831a-b9aa-4ffc-87a0-76644f37d447",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c72fbc9b-661a-40a8-b972-50aec2603318",
+            "17aff98d-4d3a-4856-aed7-02d33ebdfedf",
+            "f142ed2b-cc46-4970-88c1-ad49fa629220",
+            "3e2ac9c9-518a-4f2d-874c-d31aab9fbfec"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 677,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/api_test",
+        "reportFilename": "report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

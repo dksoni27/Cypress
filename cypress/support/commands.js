@@ -31,3 +31,5 @@ Cypress.Commands.add('Login',(email,password) =>{
     cy.get('#loginPassword').should('be.visible').type(password); 
     cy.get('#btn_login',{ timeout: 10000 }).should('be.visible').click();
 })
+
+

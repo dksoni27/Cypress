@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2025-06-21T13:56:32.178Z",
-    "end": "2025-06-21T13:57:09.776Z",
-    "duration": 37598,
+    "start": "2025-06-22T09:25:30.997Z",
+    "end": "2025-06-22T09:25:31.911Z",
+    "duration": 914,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,49 +18,49 @@
   },
   "results": [
     {
-      "uuid": "285228b4-2e33-4f70-a170-e914fc66726e",
+      "uuid": "3d977a36-c899-4447-a155-1728f03e2849",
       "title": "",
-      "fullFile": "cypress\\e2e\\beckett\\grading\\popreport.cy.js",
-      "file": "cypress\\e2e\\beckett\\grading\\popreport.cy.js",
+      "fullFile": "cypress\\e2e\\api_test\\post.cy.js",
+      "file": "cypress\\e2e\\api_test\\post.cy.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "dd877c09-cd59-4d3e-bd3f-7271225734e7",
-          "title": "grading pop report",
+          "uuid": "e858a595-0871-445d-813a-3fe769900462",
+          "title": "Create new user using POST",
           "fullFile": "",
           "file": "",
           "beforeHooks": [],
           "afterHooks": [],
           "tests": [
             {
-              "title": "pop report ",
-              "fullTitle": "grading pop report pop report ",
+              "title": "post Users",
+              "fullTitle": "Create new user using POST post Users",
               "timedOut": null,
-              "duration": 34173,
+              "duration": 867,
               "state": "passed",
-              "speed": "slow",
+              "speed": "fast",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "cy.viewport(1920, 1080);\ncy.visit(\"https://www.beckett.com/\");\ncy.contains('Pop Report').should('be.visible').click();\ncy.get('#sport_id').should('be.visible').select('Baseball');\ncy.get('#set_name').should('be.visible').type('2009 topps');\ncy.get('#player_name').should('be.visible').type('Jordan');\ncy.get('input[name=search]').should('be.visible').click();\ncy.wait(8000);\ncy.get('tbody > :nth-child(1) > :nth-child(5) > a').should('contain.text', '2009 Topps 206 Autographs');\ncy.contains('a', '2009 Topps 206 Mini Framed Autograph').should('be.visible');\ncy.wait(8000);\ncy.get('input[name=\"ViewAllGrades\"]').should('be.visible').click();",
+              "code": "//genreting rendum emails\nvar pattern = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\";\nfor (var i = 0; i < 10; i++) {\n  rendumtext += pattern.charAt(Math.floor(Math.random() * pattern.length));\n  textemail = rendumtext + \"@gmnail.com\";\n}\ncy.request({\n  method: \"POST\",\n  url: \"https://gorest.co.in/public/v2/users\",\n  headers: {\n    Authorization: \"Bearer 3260e4bb2c95687541c997231ee95646ff0d767415fad82d5ff8c11d145d1431\",\n    'Content-Type': 'application/json'\n  },\n  // getting data from fixtures file\n  body: {\n    name: data.name,\n    email: textemail,\n    gender: data.gender,\n    status: data.status\n  }\n}).then(res => {\n  cy.log(JSON.stringify(res));\n  expect(res.status).to.equal(201);\n  expect(res.body).to.have.property('id');\n  expect(res.body.name).to.equal(data.name);\n  expect(res.body.gender).to.equal(data.gender);\n});",
               "err": {},
-              "uuid": "98277e33-3e9f-4450-85c7-fdd44b8fe255",
-              "parentUUID": "dd877c09-cd59-4d3e-bd3f-7271225734e7",
+              "uuid": "b3b706dd-2b3c-4d84-938a-96d40799494a",
+              "parentUUID": "e858a595-0871-445d-813a-3fe769900462",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "98277e33-3e9f-4450-85c7-fdd44b8fe255"
+            "b3b706dd-2b3c-4d84-938a-96d40799494a"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 34173,
+          "duration": 867,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -94,7 +94,7 @@
     },
     "marge": {
       "options": {
-        "reportDir": "cypress/reports/beckett",
+        "reportDir": "cypress/reports/api_test",
         "reportFilename": "report",
         "overwrite": false,
         "html": true,

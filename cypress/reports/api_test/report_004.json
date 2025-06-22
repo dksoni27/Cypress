@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2025-06-21T13:56:32.178Z",
-    "end": "2025-06-21T13:57:09.776Z",
-    "duration": 37598,
+    "start": "2025-06-22T09:25:21.706Z",
+    "end": "2025-06-22T09:25:28.976Z",
+    "duration": 7270,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,49 +18,49 @@
   },
   "results": [
     {
-      "uuid": "285228b4-2e33-4f70-a170-e914fc66726e",
+      "uuid": "b434f122-e8e1-48ee-9417-6bd4a87a1f89",
       "title": "",
-      "fullFile": "cypress\\e2e\\beckett\\grading\\popreport.cy.js",
-      "file": "cypress\\e2e\\beckett\\grading\\popreport.cy.js",
+      "fullFile": "cypress\\e2e\\api_test\\intercept.cy.js",
+      "file": "cypress\\e2e\\api_test\\intercept.cy.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "dd877c09-cd59-4d3e-bd3f-7271225734e7",
-          "title": "grading pop report",
+          "uuid": "28fe0012-8acf-4056-8cea-2e8fed4ab0f4",
+          "title": "interseft requset",
           "fullFile": "",
           "file": "",
           "beforeHooks": [],
           "afterHooks": [],
           "tests": [
             {
-              "title": "pop report ",
-              "fullTitle": "grading pop report pop report ",
+              "title": "simple intersept",
+              "fullTitle": "interseft requset simple intersept",
               "timedOut": null,
-              "duration": 34173,
+              "duration": 4720,
               "state": "passed",
-              "speed": "slow",
+              "speed": "fast",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "cy.viewport(1920, 1080);\ncy.visit(\"https://www.beckett.com/\");\ncy.contains('Pop Report').should('be.visible').click();\ncy.get('#sport_id').should('be.visible').select('Baseball');\ncy.get('#set_name').should('be.visible').type('2009 topps');\ncy.get('#player_name').should('be.visible').type('Jordan');\ncy.get('input[name=search]').should('be.visible').click();\ncy.wait(8000);\ncy.get('tbody > :nth-child(1) > :nth-child(5) > a').should('contain.text', '2009 Topps 206 Autographs');\ncy.contains('a', '2009 Topps 206 Mini Framed Autograph').should('be.visible');\ncy.wait(8000);\ncy.get('input[name=\"ViewAllGrades\"]').should('be.visible').click();",
+              "code": "cy.visit('https://jsonplaceholder.typicode.com/');\ncy.intercept({\n  path: '/posts'\n}).as('123');\ncy.get('tbody > :nth-child(1) > :nth-child(1) > a').click();\ncy.wait('@123').then(intr => {\n  cy.log(JSON.stringify(intr));\n  console.log(JSON.stringify(intr));\n  expect(intr.response.body).to.have.length(100);\n});",
               "err": {},
-              "uuid": "98277e33-3e9f-4450-85c7-fdd44b8fe255",
-              "parentUUID": "dd877c09-cd59-4d3e-bd3f-7271225734e7",
+              "uuid": "5de24139-83b7-4cf0-8e5c-9a50a8afadae",
+              "parentUUID": "28fe0012-8acf-4056-8cea-2e8fed4ab0f4",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "98277e33-3e9f-4450-85c7-fdd44b8fe255"
+            "5de24139-83b7-4cf0-8e5c-9a50a8afadae"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 34173,
+          "duration": 4720,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -94,7 +94,7 @@
     },
     "marge": {
       "options": {
-        "reportDir": "cypress/reports/beckett",
+        "reportDir": "cypress/reports/api_test",
         "reportFilename": "report",
         "overwrite": false,
         "html": true,
