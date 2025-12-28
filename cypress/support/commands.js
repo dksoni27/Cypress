@@ -25,11 +25,19 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import 'cypress-file-upload';
 
-Cypress.Commands.add('Login',(email,password) =>{
-    
+Cypress.Commands.add('Login', (email, password) => {
+
     cy.get('#loginEmail').should('be.visible').type(email);
-    cy.get('#loginPassword').should('be.visible').type(password); 
-    cy.get('#btn_login',{ timeout: 10000 }).should('be.visible').click();
+    cy.get('#loginPassword').should('be.visible').type(password);
+    cy.get('#btn_login', { timeout: 10000 }).should('be.visible').click();
 })
+
+Cypress.Commands.add('generatePlusEmail',(baseUser, domain) => {
+    const value = Math.floor(Math.random() * 10000)
+        .toString()
+        .padStart(4, '0');
+
+    return `${baseUser}+${value}@${ domain }`;
+});
 
 

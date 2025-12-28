@@ -4,17 +4,14 @@
 
 describe('Beckett bca order  Test', () => {
 
-    const email = 'devendras@beckett.com'; 
-    const password = 'Dksoni@2716';
-
 
     it("BCA search", function(){
 
         cy.visit("https://www.beckett.com/bca")
         cy.get('.container > .ServiceSlot > .serSec > .sendBtn > .currency_alert').click();
         
-        cy.get('#loginEmail').type(email);
-        cy.get('#loginPassword').type(password, { log: false }); 
+        cy.get('#loginEmail').type(Cypress.env('email'));
+        cy.get('#loginPassword').type(Cypress.env('password'), { log: false }); 
         cy.get('#btn_login').click();
 
         //login verification 
@@ -49,8 +46,8 @@ describe('Beckett bca order  Test', () => {
         cy.visit("https://www.beckett.com/bca")
         cy.get('.container > .ServiceSlot > .serSec > .sendBtn > .currency_alert').click();
         
-        cy.get('#loginEmail').type(email);
-        cy.get('#loginPassword').type(password, { log: false }); 
+        cy.get('#loginEmail').type(Cypress.env('email'));
+        cy.get('#loginPassword').type(Cypress.env('password'), { log: false }); 
         cy.get('#btn_login').click();
 
         //login verification 

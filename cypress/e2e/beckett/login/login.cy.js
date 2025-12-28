@@ -1,16 +1,13 @@
 describe('Positive Login Test', () => {
 
-    const email = 'devendras@beckett.com'; 
-    const password = 'Dksoni@2716';   
-    const WrongPWD = 'Abc@1212'; 
+    
 
     // login positev 
 
     it('login successfully with valid credentials', () => {
       cy.visit('https://www.beckett.com/login');
       
-      cy.Login(email,password)
-  
+      cy.Login(Cypress.env('email'),Cypress.env('password'))
       cy.url().should('not.include', '/login'); 
       cy.contains('Logout', { timeout: 10000 }).should('be.visible');
     });
@@ -19,8 +16,8 @@ describe('Positive Login Test', () => {
     it('stay logged in with Remember Me checked', () => {
         cy.visit('https://www.beckett.com/login');
 
-        cy.get('#loginEmail').type(email);
-        cy.get('#loginPassword').type(password); 
+        cy.get('#loginEmail').type(Cypress.env('email'));
+        cy.get('#loginPassword').type(Cypress.env('password')); 
         cy.get('.form-check-label').should('be.visible').click();
         cy.get('#btn_login', { timeout: 10000 }).click();
 
@@ -33,8 +30,8 @@ describe('Positive Login Test', () => {
 
     it('display error for incorrect password and email', () => {
         cy.visit('https://www.beckett.com/login');
-        cy.get('#loginEmail').type(email);
-        cy.get('#loginPassword').type(WrongPWD); 
+        cy.get('#loginEmail').type(Cypress.env('email'));
+        cy.get('#loginPassword').type(Cypress.env('W_paasword')); 
         cy.get('#btn_login').click();
     
         cy.contains("We're sorry, but the email or password you entered is incorrect. Please try again.").should('be.visible')

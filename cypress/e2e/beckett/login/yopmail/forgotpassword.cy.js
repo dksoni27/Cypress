@@ -9,8 +9,8 @@ describe('Forgot password test', () => {
 
         cy.visit('https://www.beckett.com/')
         cy.get('.btn-outline-primary-new-color').should('be.visible').click()
-        cy.get('#loginEmail').type(email);
-        cy.get('#loginPassword').type(wpassword)
+        cy.get('#loginEmail').type(Cypress.env('email'));
+        cy.get('#loginPassword').type(Cypress.env('email'))
 
         cy.contains('a', 'Forgot Password').should('be.visible').click()
         cy.contains('h1', 'Forgot Password').should('be.visible')

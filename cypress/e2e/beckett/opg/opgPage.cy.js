@@ -1,18 +1,15 @@
 describe('Beckett opg Test', () => {
-    const email = 'rajsoni90@yopmail.com';
-
-    const email1 = 'devendras@beckett.com';
-    const password = 'Dksoni@2716';    
-
-
+     
     Cypress.on('uncaught:exception', (err, runnable) => {
       // returning false prevents Cypress from failing the test
       if (err.message.includes('resetTimer is not defined')) {
         return false;
       }
     });
+
     it('opg guest checkout test', () => {
      
+      cy.generatePlusEmail('devendras', 'beckett.com').then((email) => {
       cy.visit('https://www.beckett.com/opg');
       cy.get('a[rel="Total Access Online Price Guide"]').should('be.visible').click();
       cy.get('#menu1 > div.row > div > div.table-box > div > table > tbody > tr:nth-child(5)').should('be.visible').click()
@@ -30,7 +27,7 @@ describe('Beckett opg Test', () => {
 
       cy.get('#login_submit').should('be.visible').click()
      
-
+    });
     });
 
 
@@ -43,12 +40,12 @@ describe('Beckett opg Test', () => {
 
       cy.get('#onetrust-accept-btn-handler').click()
      
-      cy.get('#loginEmail').should('be.visible').type(email1)
+      cy.get('#loginEmail').should('be.visible').type(Cypress.env('email'),{ force: true })
       cy.get('#beckett_account').check({ force: true });
-      cy.get('#loginPassword').should('be.visible').type(password)
-      cy.get('#login_submit').should('be.visible').click()
+      cy.get('#loginPassword').should('be.visible').type(Cypress.env('password'),{ force: true })
+      cy.get('#login_submit').should('be.visible').click({ force: true })
       
-      cy.wait(5000)
+      cy.wait(10000)
       cy.get('#cart_panel_head > .panel-title > .clickdisable').should('be.visible')
       cy.get('div.BtnConTopAbs > a').should('be.visible').click()
      

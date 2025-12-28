@@ -1,7 +1,6 @@
 
 describe('Beckett opg search', () => {
-    const email = 'devendras@beckett.com'; 
-    const password = 'Dksoni@2716';    
+       
 
   
     it('opg search without login ', () => {
@@ -21,11 +20,11 @@ describe('Beckett opg search', () => {
         cy.visit('https://www.beckett.com/opg');
         cy.get('div[class="LogGridRight"] a[aria-label="Login"]').should('be.visible').click();
 
-        cy.get('#loginEmail').type('devendras@beckett.com');
-        cy.get('#loginPassword',{timeout:500}).type('Dksoni@2716'); 
+        cy.get('#loginEmail').type(Cypress.env('email'));
+        cy.get('#loginPassword',{timeout:500}).type(Cypress.env('password')); 
         cy.get('#btn_login').click({ force: true });
       
-        cy.wait(8000)
+        cy.wait(10000)
         cy.url().should('not.include', '/login'); 
         cy.url().should('include', '/online-price-guide');
         cy.get('#siteSearchQuery').should('be.visible').click()
