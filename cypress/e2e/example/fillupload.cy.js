@@ -1,17 +1,18 @@
 describe('file upload' , () =>{
    
 
-    const email = 'devendras@beckett.com'; 
-    const password = 'Dksoni@2716';
+    beforeEach(() => {
+        cy.session('Beckett-Login', () => {
+            cy.Login()
+        })
+    })
 
     it("BCA order place", function(){
 
         cy.visit("https://www.beckett.com/bca")
         cy.get('.container > .ServiceSlot > .serSec > .sendBtn > .currency_alert').click();
         
-        cy.get('#loginEmail').type(email);
-        cy.get('#loginPassword').type(password, { log: false }); 
-        cy.get('#btn_login').click();
+        
 
         //login verification 
         cy.url().should('include', '/bca/add'); 

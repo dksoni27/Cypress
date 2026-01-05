@@ -1,58 +1,59 @@
 describe('Beckett opg Test', () => {
-     
-    Cypress.on('uncaught:exception', (err, runnable) => {
-      // returning false prevents Cypress from failing the test
-      if (err.message.includes('resetTimer is not defined')) {
-        return false;
-      }
-    });
 
-    it('opg guest checkout test', () => {
-     
-      cy.generatePlusEmail('devendras', 'beckett.com').then((email) => {
+  Cypress.on('uncaught:exception', (err, runnable) => {
+    // returning false prevents Cypress from failing the test
+    if (err.message.includes('resetTimer is not defined')) {
+      return false;
+    }
+  });
+
+  it('opg guest checkout test', () => {
+
+
+    cy.generatePlusEmail('devendras', 'beckett.com').then((email) => {
       cy.visit('https://www.beckett.com/opg');
       cy.get('a[rel="Total Access Online Price Guide"]').should('be.visible').click();
       cy.get('#menu1 > div.row > div > div.table-box > div > table > tbody > tr:nth-child(5)').should('be.visible').click()
       cy.get('#subscribe_total_now').should('be.visible').click();
 
       cy.get('#onetrust-accept-btn-handler').click()
-     
+
       cy.get('#loginEmail').should('be.visible').type(email)
       cy.get('#guest_account').should('be.checked')
 
       cy.get('#send-valid-guest-login-otp').should('be.visible').click()
       cy.wait(8000);
       cy.get('#validgusetloginOTP').should('be.visible').click()
-  
+
 
       cy.get('#login_submit').should('be.visible').click()
-     
-    });
-    });
-
-
-    it('opg  checkout using login  test', () => {
-     
-      cy.visit('https://www.beckett.com/opg');
-      cy.get('a[rel="Total Access Online Price Guide"]').should('be.visible').click();
-      cy.get('#menu1 > div.row > div > div.table-box > div > table > tbody > tr:nth-child(5)').should('be.visible').click()
-      cy.get('#subscribe_total_now').should('be.visible').click();
-
-      cy.get('#onetrust-accept-btn-handler').click()
-     
-      cy.get('#loginEmail').should('be.visible').type(Cypress.env('email'),{ force: true })
-      cy.get('#beckett_account').check({ force: true });
-      cy.get('#loginPassword').should('be.visible').type(Cypress.env('password'),{ force: true })
-      cy.get('#login_submit').should('be.visible').click({ force: true })
-      
-      cy.wait(10000)
-      cy.get('#cart_panel_head > .panel-title > .clickdisable').should('be.visible')
-      cy.get('div.BtnConTopAbs > a').should('be.visible').click()
-     
 
     });
+  });
 
-    
+
+  it('opg  checkout using login  test', () => {
+
+    cy.visit('https://www.beckett.com/opg');
+    cy.get('a[rel="Total Access Online Price Guide"]').should('be.visible').click();
+    cy.get('#menu1 > div.row > div > div.table-box > div > table > tbody > tr:nth-child(5)').should('be.visible').click()
+    cy.get('#subscribe_total_now').should('be.visible').click();
+
+    cy.get('#onetrust-accept-btn-handler').click()
+
+    cy.get('#loginEmail').should('be.visible').type(Cypress.env('email'), { force: true })
+    cy.get('#beckett_account').check({ force: true });
+    cy.get('#loginPassword').should('be.visible').type(Cypress.env('password'), { force: true })
+    cy.get('#login_submit').should('be.visible').click({ force: true })
+
+    cy.wait(10000)
+    cy.get('#cart_panel_head > .panel-title > .clickdisable').should('be.visible')
+    cy.get('div.BtnConTopAbs > a').should('be.visible').click()
+    cy.get(':nth-child(13) > .col-md-12 > .btn').should('be.visible').click()
+
 
   });
-  
+
+
+
+});

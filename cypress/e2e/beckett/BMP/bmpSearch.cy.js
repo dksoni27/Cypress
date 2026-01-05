@@ -1,5 +1,5 @@
 describe('BMP search test ',function(){
-    it('BMP Search withhhout login', ()=>{
+    it('BMP Search', ()=>{
 
         cy.visit('https://marketplace.beckett.com/')
         cy.viewport('macbook-16')

@@ -8,7 +8,6 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 //
-//
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
@@ -25,10 +24,10 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import 'cypress-file-upload';
 
-Cypress.Commands.add('Login', (email, password) => {
-
-    cy.get('#loginEmail').should('be.visible').type(email);
-    cy.get('#loginPassword').should('be.visible').type(password);
+Cypress.Commands.add('Login', () => {
+    cy.visit('https://www.beckett.com/login');
+    cy.get('#loginEmail').should('be.visible').type(Cypress.env('email'));
+    cy.get('#loginPassword').should('be.visible').type(Cypress.env('password'));
     cy.get('#btn_login', { timeout: 10000 }).should('be.visible').click();
 })
 
@@ -38,6 +37,11 @@ Cypress.Commands.add('generatePlusEmail',(baseUser, domain) => {
         .padStart(4, '0');
 
     return `${baseUser}+${value}@${ domain }`;
+});
+Cypress.Commands.add('getUsernameFromEmail', (email) => {
+  return email
+    .split('@')[0]
+    .replace(/\+/g, '_');
 });
 
 
